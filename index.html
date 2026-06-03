@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajat Rai | Generative AI Engineer & Builder</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Rajat Rai - Generative AI Engineer, Data Scientist at IIT Jodhpur, and Tech Content Creator.">
+    <meta name="keywords" content="Rajat Rai, CodeWithRajat, jee_with_rajat, IIT Jodhpur, Generative AI Engineer, Data Science, Portfolio, EduAniAI, Bhadohi">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #fbfcfa; 
+            --text-dark: #121212;
+            --text-muted: #595959;
+            --accent-green: #5b7566; 
+            --btn-black: #121212;
+            --btn-outline: #e3e1da;
+            --card-bg: #f5f4ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            padding: 0 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Redesigned Top Header & Navigation Menu */
+        header {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 2rem 0.5rem 1rem 0.5rem;
+            margin-top: 0.5rem;
+            border-bottom: 1px solid #edebe4;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        /* Top Menu Premium Links Styling */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.6rem 1rem;
+            width: 100%;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            transition: color 0.2s ease-in-out;
+            padding: 0.2rem 0.4rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-green);
+        }
+
+        /* Hero Container */
+        .hero {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 3.5rem 0.5rem 4rem 0.5rem;
+        }
+
+        .tagline {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+            margin-bottom: 3.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tagline::before, .tagline::after {
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 1px;
+            background-color: var(--accent-green);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.4rem;
+            line-height: 1.05;
+            font-weight: 400;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span.italic-name {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-green);
+            display: block;
+            font-weight: 400;
+        }
+
+        .sub-roles {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            padding: 0 0.5rem;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            max-width: 100%;
+            line-height: 1.6;
+            margin-bottom: 4rem;
+            padding: 0 1rem;
+        }
+
+        .cta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1.25rem;
+            border-radius: 40px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-black {
+            background-color: var(--btn-black);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-outline-dark {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-outline-green {
+            background-color: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .scroll-explore {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-explore::before {
+            content: '';
+            display: inline-block;
+            width: 35px;
+            height: 1px;
+            background-color: var(--text-muted);
+        }
+
+        /* Sections General Layout */
+        .story-section {
+            width: 100%;
+            max-width: 500px;
+            padding: 5rem 0.5rem;
+            border-top: 1px solid #edebe4;
+        }
+
+        .story-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            font-style: italic;
+            color: var(--accent-green);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 1.75;
+            color: #2b2b2b;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .story-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Profile Force Card - Box Layout Match */
+        .force-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 1.8rem;
+            border-radius: 24px;
+            border: 1px solid #e3e1da;
+            margin-bottom: 3rem;
+        }
+
+        /* Vertical Mindset Grid */
+        .strategy-vertical-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .strategy-card {
+            background: #ffffff;
+            border: 1px solid #e3e1da;
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .strategy-card:hover {
+            border-color: var(--accent-green);
+            background-color: #faf9f5;
+            transform: translateY(-2px);
+        }
+
+        .strategy-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .strategy-card-header i {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+        }
+
+        .strategy-card p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        .click-hint {
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            width: 100%;
+            max-width: 500px;
+            padding: 5rem 0.5rem;
+            border-top: 1px solid #edebe4;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem 1.5rem;
+            border-radius: 24px;
+            margin-top: 1.5rem;
+            border: 1px solid #e3e1da;
+        }
+
+        .project-title-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-tagline {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--accent-green);
+            margin-bottom: 1.8rem;
+        }
+
+        .project-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-dark);
+        }
+
+        .project-card p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-card ul li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .project-card ul li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background-color: #ffffff;
+            border: 1px solid #e3e1da;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        /* Popup Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+            padding: 0 1.5rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #1c1c1a; 
+            color: #fbfcfa;
+            width: 100%;
+            max-width: 420px;
+            padding: 2.5rem 2rem;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            color: #a6a49e;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header i {
+            color: #8fa89b; 
+        }
+
+        .modal-body {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #d1cfc8;
+        }
+
+        /* Footer Grid Layout */
+        footer {
+            width: 100%;
+            max-width: 500px;
+            padding: 5rem 0.5rem 4rem 0.5rem;
+            border-top: 1px solid #edebe4;
+            text-align: center;
+        }
+
+        footer h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .footer-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .grid-email {
+            grid-column: span 2;
+        }
+
+        .social-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background: #ffffff;
+            border: 1px solid #e3e1da;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .social-box i {
+            font-size: 1.6rem;
+            color: var(--accent-green);
+            margin-bottom: 0.6rem;
+        }
+
+        .social-box span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .social-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-green);
+            background-color: #faf9f5;
+            box-shadow: 0 8px 20px rgba(91, 117, 102, 0.05);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid #edebe4;
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation Menu -->
+    <header>
+        <div class="logo">Rajat<span>.</span></div>
+        <nav class="top-nav">
+            <a href="#about" class="nav-link">About Me</a>
+            <a href="#mindset" class="nav-link">Mindset</a>
+            <a href="#work" class="nav-link">Work & System</a>
+            <a href="#industry" class="nav-link">Industry</a>
+            <a href="#connect" class="nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="tagline">Builder • Leader • Innovator — Beyond the Classroom</div>
+        
+        <h1>Rajat <span class="italic-name">Rai</span></h1>
+        
+        <div class="sub-roles">
+            BS Student at IIT Jodhpur • Generative AI Engineer • Full-Stack Builder
+        </div>
+        
+        <div class="quote">
+            "Focusing on solving high-impact, real-world problems through artificial intelligence — I don't wait to graduate to make an impact."
+        </div>
+        
+        <div class="cta-list">
+            <a href="#work" class="btn btn-black">View Projects & Systems</a>
+            <a href="mailto:Rairajat244@gmail.com" class="btn btn-outline-dark">Download Resume</a>
+            <a href="#connect" class="btn btn-outline-green">Contact Me</a>
+        </div>
+        
+        <div class="scroll-explore">Scroll to explore</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="story-section" id="about">
+        <div class="story-title">About Me.</div>
+        
+        <!-- A Force. Card Box -->
+        <div class="force-card">
+            <p class="story-text" style="font-size: 1.35rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-green); margin-bottom: 1rem;">
+                A Force.
+            </p>
+            <p class="story-text">
+                I'm <strong>Rajat Rai</strong> — and the name itself says something. Confidence. Boldness. Dedication.
+            </p>
+            <p class="story-text">
+                I am a student within the premium <strong>Bachelor of Science (BS) in Applied AI and Data Science at IIT Jodhpur</strong>. Driven by systemic logic, I have also navigated advanced qualification tracks with <strong>IIT Madras</strong>. My focus is entirely locked on evolving as a top-tier <strong>Generative Artificial Intelligence Engineer</strong>, dedicating my skills to creating highly efficient automation frameworks.
+            </p>
+            <p class="story-text" style="margin-bottom: 0;">
+                I run on priorities and structure. My mind works like a Python program — clean logic, clear flow, no unnecessary noise. I don't do chaos, I do systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mindset Section -->
+    <section class="story-section" id="mindset" style="border-top: none; padding-top: 1rem;">
+        <div class="story-title" style="font-size: 2.4rem; margin-bottom: 0.5rem;">Mindset.</div>
+        <p class="story-text" style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            How I train my core processing units. Tap any box to unlock insight.
+        </p>
+
+        <!-- Vertical Stack Boxes -->
+        <div class="strategy-vertical-stack">
+            
+            <!-- Logic Box -->
+            <div class="strategy-card" onclick="openPopup('logic')">
+                <div class="strategy-card-header">
+                    <i class="fas fa-chess-knight"></i> Logic & Strategy
+                </div>
+                <p>Utilizing strategic game frameworks like Chess to sharpen logical reasoning and pattern recognition...</p>
+                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
+            </div>
+
+            <!-- Execution Box -->
+            <div class="strategy-card" onclick="openPopup('execution')">
+                <div class="strategy-card-header">
+                    <i class="fas fa-users"></i> Execution Paradigm
+                </div>
+                <p>Drawing core inspiration from data-led team-building frameworks and high-pressure system execution...</p>
+                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
+            </div>
+
+            <!-- Design Box -->
+            <div class="strategy-card" onclick="openPopup('visual')">
+                <div class="strategy-card-header">
+                    <i class="fas fa-palette"></i> Visual Strategy
+                </div>
+                <p>Applying structured color harmony and cinematic layout design principles to frontends...</p>
+                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
+            </div>
+
+            <!-- Cross Domain Box -->
+            <div class="strategy-card" onclick="openPopup('cross')">
+                <div class="strategy-card-header">
+                    <i class="fas fa-chart-line"></i> Cross-Domain
+                </div>
+                <p>Fluidly bridging operational gaps between codebase development and industrial supply chains...</p>
+                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Work & Systems Section -->
+    <section class="projects-section" id="work">
+        <div class="story-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">Work & Systems.</div>
+        
+        <!-- Flagship Project: EduAniAI -->
+        <div class="project-card">
+            <div class="project-title-main">EduAniAI</div>
+            <div class="project-tagline">Turning Static Textbooks into Cinematic Educational Experiences</div>
+            
+            <p>
+                EduAniAI is an advanced educational ecosystem designed to convert standard NCERT textbook curriculums (Class 1-12) into highly dynamic, character-driven animated lessons using automated scripts and AI rendering frameworks.
+            </p>
+            
+            <div class="project-heading">Key Architecture</div>
+            <ul>
+                <li><strong>AI-Powered Scripting:</strong> Orchestrated context-aware educational script generation utilizing the Google Gemini API.</li>
+                <li><strong>Cinematic Video Engine:</strong> Automated frame processing and text-to-speech synchronization using MoviePy and gTTS.</li>
+                <li><strong>Role-Play Simulations:</strong> Built interactive environment structures led by custom AI personas like a <em>Quantum Physicist</em> or <em>Calculus Ninja</em>.</li>
+                <li><strong>Vision Pipelines:</strong> Seamless conversion of raw physical textbook page captures into structured OCR data workflows.</li>
+            </ul>
+            
+            <div class="project-heading">Technical Stack & Workflow</div>
+            <div class="tech-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Google Gemini API</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">MoviePy</span>
+                <span class="tag">gTTS</span>
+                <span class="tag">Cursor AI</span>
+                <span class="tag">VS Code</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Section -->
+    <section class="projects-section" id="industry" style="border-top: none; padding-top: 1rem;">
+        <div class="story-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">Industry Analytics.</div>
+        
+        <!-- Industrial Experience: Cargo Analytics -->
+        <div class="project-card">
+            <div class="project-title-main">Industrial Analytics</div>
+            <div class="project-tagline">Supply Chain Tracking & Compliance Management</div>
+            
+            <p>
+                Applied backend systems design and logistical tracking optimization inside the highly competitive handmade carpet export industry cluster located across the Bhadohi / Varanasi region.
+            </p>
+            
+            <div class="project-heading">Key Contributions</div>
+            <ul>
+                <li><strong>Customs Tracking Optimization:</strong> Engineered structured file analysis procedures for tracking critical Dadri DBK (Duty Drawback) logs.</li>
+                <li><strong>Stakeholder Data Alignment:</strong> Facilitated data compliance mapping workflows for leading sector entities like Archana Export House.</li>
+                <li><strong>Operations Automation:</strong> Reduced human processing discrepancies by modeling automated record verification frameworks.</li>
+            </ul>
+            
+            <div class="project-heading">Domain Expertise</div>
+            <div class="tech-tags">
+                <span class="tag">Logistics Data Modeling</span>
+                <span class="tag">Compliance Tracking</span>
+                <span class="tag">Operations Analytics</span>
+                <span class="tag">Process Automation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Interactive Modal/Popup Structure -->
+    <div class="modal-overlay" id="popupModal" onclick="closePopupOnOverlay(event)">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closePopup()">&times;</button>
+            <div id="modalHeader" class="modal-header"></div>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Connect / Redesigned Premium Grid Section -->
+    <footer id="connect">
+        <h4>Let's Connect</h4>
+        <p class="footer-subtitle">Let's build systems that scale.</p>
+        
+        <div class="social-grid">
+            
+            <!-- Instagram Tech -->
+            <a href="https://www.instagram.com/_codewithrajat?igsh=djVsYmRxYnk3MGp1" class="social-box" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>@codewithrajat</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/rajat-rai-87b829328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-box" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/@jee_with_rajat?si=yee5UizoqPyU9dMw" class="social-box" target="_blank">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+
+            <!-- Instagram Personal -->
+            <a href="https://www.instagram.com/_rajjuubhai16" class="social-box" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Personal IG</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:Rairajat244@gmail.com" class="social-box grid-email">
+                <i class="fas fa-envelope"></i>
+                <span>Rairajat244@gmail.com</span>
+            </a>
+
+        </div>
+        
+        <p class="copyright">&copy; 2026 Rajat Rai. Designed for impact.</p>
+    </footer>
+
+    <!-- Popup Control JavaScript Logic -->
+    <script>
+        const popupData = {
+            logic: {
+                title: '<i class="fas fa-chess-knight"></i> Logic & Strategy',
+                body: 'Utilizing strategic game frameworks like Chess to sharpen logical reasoning, pattern recognition, and structural troubleshooting in programming sequences. Every move is tactical; every bug is a puzzle requiring clean tactical execution.'
+            },
+            execution: {
+                title: '<i class="fas fa-users"></i> Execution Paradigm',
+                body: 'A keen follower of cricket analytics and strategic captaincy, drawing core inspiration from data-led team-building frameworks and high-pressure system execution methodologies. Leading code architectures requires the same composure as managing a high-stakes strategic defense.'
+            },
+            visual: {
+                title: '<i class="fas fa-palette"></i> Visual Strategy',
+                body: 'Passionate about cinematic, dark, and minimalist visual aesthetics, applying structured color harmony and layout design principles directly to digital platform frontends and user experiences. Code must not only execute flawlessly, but it must also present flawlessly.'
+            },
+            cross: {
+                title: '<i class="fas fa-chart-line"></i> Cross-Domain Capability',
+                body: 'Demonstrated adaptability by fluidly bridging the operational gaps between granular, pure codebase development and high-level industrial supply chain frameworks. This analytical bridge ensures engineered solutions are perfectly tuned to clear ground-level problems.'
+            }
+        };
+
+        function openPopup(key) {
+            const modal = document.getElementById('popupModal');
+            document.getElementById('modalHeader').innerHTML = popupData[key].title;
+            document.getElementById('modalBody').innerText = popupData[key].body;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closePopup() {
+            const modal = document.getElementById('popupModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+        }
+
+        function closePopupOnOverlay(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closePopup();
+            }
+        }
+    </script>
+
+</body>
+</html>
