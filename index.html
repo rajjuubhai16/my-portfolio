@@ -1,822 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajat Rai | Generative AI Engineer & Builder</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio of Rajat Rai - Generative AI Engineer, Data Scientist at IIT Jodhpur, and Tech Content Creator.">
-    <meta name="keywords" content="Rajat Rai, CodeWithRajat, jee_with_rajat, IIT Jodhpur, Generative AI Engineer, Data Science, Portfolio, EduAniAI, Bhadohi">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-color: #fbfcfa; 
-            --text-dark: #121212;
-            --text-muted: #595959;
-            --accent-green: #5b7566; 
-            --btn-black: #121212;
-            --btn-outline: #e3e1da;
-            --card-bg: #f5f4ee;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            padding: 0 1.2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* Redesigned Top Header & Navigation Menu */
-        header {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.2rem;
-            padding: 2rem 0.5rem 1rem 0.5rem;
-            margin-top: 0.5rem;
-            border-bottom: 1px solid #edebe4;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 500;
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            color: var(--accent-green);
-        }
-
-        /* Top Menu Premium Links Styling */
-        .top-nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.6rem 1rem;
-            width: 100%;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-            transition: color 0.2s ease-in-out;
-            padding: 0.2rem 0.4rem;
-        }
-
-        .nav-link:hover {
-            color: var(--accent-green);
-        }
-
-        /* Hero Container */
-        .hero {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 3.5rem 0.5rem 4rem 0.5rem;
-        }
-
-        .tagline {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-green);
-            margin-bottom: 3.5rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .tagline::before, .tagline::after {
-            content: '';
-            display: inline-block;
-            width: 15px;
-            height: 1px;
-            background-color: var(--accent-green);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.4rem;
-            line-height: 1.05;
-            font-weight: 400;
-            letter-spacing: -1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 span.italic-name {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--accent-green);
-            display: block;
-            font-weight: 400;
-        }
-
-        .sub-roles {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 2.5rem;
-            font-weight: 400;
-            padding: 0 0.5rem;
-        }
-
-        .quote {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.25rem;
-            color: var(--text-dark);
-            max-width: 100%;
-            line-height: 1.6;
-            margin-bottom: 4rem;
-            padding: 0 1rem;
-        }
-
-        .cta-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            width: 100%;
-            margin-bottom: 4rem;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 1.25rem;
-            border-radius: 40px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 500;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .btn-black {
-            background-color: var(--btn-black);
-            color: #ffffff;
-            border: none;
-        }
-
-        .btn-outline-dark {
-            background-color: transparent;
-            color: var(--text-dark);
-            border: 1px solid var(--text-dark);
-        }
-
-        .btn-outline-green {
-            background-color: transparent;
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
-        }
-
-        .scroll-explore {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .scroll-explore::before {
-            content: '';
-            display: inline-block;
-            width: 35px;
-            height: 1px;
-            background-color: var(--text-muted);
-        }
-
-        /* Sections General Layout */
-        .story-section {
-            width: 100%;
-            max-width: 500px;
-            padding: 5rem 0.5rem;
-            border-top: 1px solid #edebe4;
-        }
-
-        .story-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
-            font-style: italic;
-            color: var(--accent-green);
-            margin-bottom: 2.5rem;
-            font-weight: 400;
-        }
-
-        .story-text {
-            font-size: 1.2rem;
-            line-height: 1.75;
-            color: #2b2b2b;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .story-text strong {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        /* Profile Force Card - Box Layout Match */
-        .force-card {
-            background-color: var(--card-bg);
-            padding: 2.5rem 1.8rem;
-            border-radius: 24px;
-            border: 1px solid #e3e1da;
-            margin-bottom: 3rem;
-        }
-
-        /* Vertical Mindset Grid */
-        .strategy-vertical-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-        }
-
-        .strategy-card {
-            background: #ffffff;
-            border: 1px solid #e3e1da;
-            padding: 2rem 1.5rem;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .strategy-card:hover {
-            border-color: var(--accent-green);
-            background-color: #faf9f5;
-            transform: translateY(-2px);
-        }
-
-        .strategy-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .strategy-card-header i {
-            font-size: 1.2rem;
-            color: var(--accent-green);
-        }
-
-        .strategy-card p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-        }
-
-        .click-hint {
-            font-size: 0.75rem;
-            color: var(--accent-green);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 600;
-        }
-
-        /* Projects Section */
-        .projects-section {
-            width: 100%;
-            max-width: 500px;
-            padding: 5rem 0.5rem;
-            border-top: 1px solid #edebe4;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 2.5rem 1.5rem;
-            border-radius: 24px;
-            margin-top: 1.5rem;
-            border: 1px solid #e3e1da;
-        }
-
-        .project-title-main {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .project-tagline {
-            font-style: italic;
-            font-size: 1.05rem;
-            color: var(--accent-green);
-            margin-bottom: 1.8rem;
-        }
-
-        .project-heading {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 1.5rem;
-            margin-bottom: 0.6rem;
-            color: var(--text-dark);
-        }
-
-        .project-card p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .project-card ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .project-card ul li {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 1.2rem;
-        }
-
-        .project-card ul li::before {
-            content: "•";
-            color: var(--accent-green);
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            background-color: #ffffff;
-            border: 1px solid #e3e1da;
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #444;
-        }
-
-        /* Popup Modal Styling */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(18, 18, 18, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease-in-out;
-            padding: 0 1.5rem;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-box {
-            background: #1c1c1a; 
-            color: #fbfcfa;
-            width: 100%;
-            max-width: 420px;
-            padding: 2.5rem 2rem;
-            border-radius: 28px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transform: scale(0.9);
-            transition: transform 0.3s ease-in-out;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .modal-overlay.active .modal-box {
-            transform: scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.5rem;
-            background: transparent;
-            border: none;
-            color: #a6a49e;
-            font-size: 1.4rem;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .modal-close:hover {
-            color: #ffffff;
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-header i {
-            color: #8fa89b; 
-        }
-
-        .modal-body {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #d1cfc8;
-        }
-
-        /* Footer Grid Layout */
-        footer {
-            width: 100%;
-            max-width: 500px;
-            padding: 5rem 0.5rem 4rem 0.5rem;
-            border-top: 1px solid #edebe4;
-            text-align: center;
-        }
-
-        footer h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-style: italic;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .footer-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 3.5rem;
-        }
-
-        .grid-email {
-            grid-column: span 2;
-        }
-
-        .social-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem 1rem;
-            background: #ffffff;
-            border: 1px solid #e3e1da;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: all 0.25s ease-in-out;
-        }
-
-        .social-box i {
-            font-size: 1.6rem;
-            color: var(--accent-green);
-            margin-bottom: 0.6rem;
-        }
-
-        .social-box span {
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .social-box:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-green);
-            background-color: #faf9f5;
-            box-shadow: 0 8px 20px rgba(91, 117, 102, 0.05);
-        }
-
-        .copyright {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid #edebe4;
-            padding-top: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajat Rai | Co-Founder GRIT AGENCY & GenAI Architect</title>
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons & Tailwind CSS Engine -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    :root {
+      --bg: transparent;
+      --surface: rgba(4, 12, 24, 0.35);
+      --surface-card: rgba(8, 18, 36, 0.4);
+      --border: rgba(0, 242, 254, 0.25);
+      --accent-blue: #00f2fe;
+      --accent-secondary: #3b82f6;
+      --text: #ffffff;
+      --text-dim: #b0c4de;
+      --font-head: 'Space Grotesk', 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-body);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #02060d;
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px 15px;
+      position: relative;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: var(--font-head);
+    }
+
+    /* 3D Canvas Background */
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Glass Window Viewport Boundary - Fully Transparent */
+    .viewport-container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 20px auto;
+      border-radius: 36px;
+      background: rgba(4, 12, 24, 0.3);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 0 40px rgba(0, 242, 254, 0.1);
+      overflow: hidden;
+      position: relative;
+      z-index: 10;
+      padding: 40px 35px;
+    }
+
+    /* Liquid Glass Styles - Transparent */
+    .liquid-glass {
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      transition: all 0.3s ease;
+    }
+    .liquid-glass:hover {
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Navigation Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 25px;
+      border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+      margin-bottom: 35px;
+    }
+
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+
+    /* Buttons */
+    .cta-btn-primary {
+      background: var(--accent-blue);
+      color: #02060d;
+      padding: 15px 34px;
+      border-radius: 32px;
+      font-weight: 800;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cta-btn-primary:hover {
+      background: #ffffff;
+      color: #02060d;
+      box-shadow: 0 15px 35px rgba(0, 242, 254, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .section-tag {
+      color: var(--accent-blue);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .section-title span { color: var(--accent-blue); }
+
+    /* Sections */
+    section {
+      padding: 45px 0;
+      border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    /* Grids */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-grid-large {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    /* Contact Links Grid */
+    .contact-redesigned-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .contact-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .clean-link-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 15px 20px;
+      border-radius: 16px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.25s ease;
+    }
+    .clean-link-card i {
+      font-size: 1.25rem;
+      color: var(--accent-blue);
+    }
+    .clean-link-card:hover {
+      background: var(--accent-blue);
+      color: #02060d;
+      border-color: var(--accent-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
+    }
+    .clean-link-card:hover i { color: #02060d; }
+    .clean-link-card.full-span { grid-column: span 2; }
+
+    /* AI Chatbots */
+    .chat-widget-box {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 10000;
+    }
+    .chat-toggle-btn {
+      background: var(--accent-blue);
+      color: #02060d;
+      border: none;
+      padding: 13px 24px;
+      border-radius: 35px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chat-window-popup {
+      display: none;
+      width: 330px;
+      height: 450px;
+      background: rgba(4, 12, 24, 0.92);
+      border: 1px solid var(--accent-blue);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      position: absolute;
+      bottom: 65px;
+      right: 0;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: rgba(0, 242, 254, 0.15);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0, 242, 254, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-body {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.88rem;
+    }
+    .msg { padding: 8px 12px; border-radius: 12px; max-width: 85%; }
+    .ai-msg { background: rgba(0, 242, 254, 0.15); border: 1px solid rgba(0, 242, 254, 0.3); color: #fff; align-self: flex-start; }
+    .user-msg { background: var(--accent-blue); color: #02060d; font-weight: 600; align-self: flex-end; }
+    .chat-footer {
+      padding: 10px;
+      display: flex;
+      gap: 6px;
+      border-top: 1px solid rgba(0, 242, 254, 0.3);
+    }
+    .chat-footer input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: #fff;
+      outline: none;
+    }
+    .chat-footer button {
+      background: var(--accent-blue);
+      border: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #02060d;
+    }
+
+    @media (max-width: 880px) {
+      .contact-redesigned-grid { grid-template-columns: 1fr; }
+      .contact-links-grid { grid-template-columns: 1fr; }
+      .clean-link-card.full-span { grid-column: span 1; }
+      .viewport-container { padding: 25px 18px; border-radius: 24px; }
+      header { flex-direction: column; gap: 15px; }
+      .nav-pill { flex-wrap: wrap; justify-content: center; gap: 12px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header & Navigation Menu -->
+  <!-- Three.js 3D Valley & Moving Blue Fog Canvas Background -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- GLASS VIEWPORT FRAME CONTAINER -->
+  <div class="viewport-container">
+
+    <!-- Header Navigation -->
     <header>
-        <div class="logo">Rajat<span>.</span></div>
-        <nav class="top-nav">
-            <a href="#about" class="nav-link">About Me</a>
-            <a href="#mindset" class="nav-link">Mindset</a>
-            <a href="#work" class="nav-link">Work & System</a>
-            <a href="#industry" class="nav-link">Industry</a>
-            <a href="#connect" class="nav-link">Contact</a>
-        </nav>
+      <a href="#" class="brand text-2xl font-extrabold text-white tracking-wider">RAJAT<span class="text-blue-400">.AI</span></a>
+      <nav class="nav-pill hidden md:flex items-center gap-6">
+        <a href="#about" class="text-gray-300 hover:text-blue-400 font-semibold transition">About</a>
+        <a href="#grit" class="text-gray-300 hover:text-blue-400 font-semibold transition">GRIT Agency</a>
+        <a href="#services" class="text-gray-300 hover:text-blue-400 font-semibold transition">Mindset</a>
+        <a href="#projects" class="text-gray-300 hover:text-blue-400 font-semibold transition">Projects</a>
+        <a href="#certs" class="text-gray-300 hover:text-blue-400 font-semibold transition">Certificates</a>
+        <a href="#contact" class="text-gray-300 hover:text-blue-400 font-semibold transition">Contact</a>
+      </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="tagline">Builder • Leader • Innovator — Beyond the Classroom</div>
-        
-        <h1>Rajat <span class="italic-name">Rai</span></h1>
-        
-        <div class="sub-roles">
-            BS Student at IIT Jodhpur • Generative AI Engineer • Full-Stack Builder
-        </div>
-        
-        <div class="quote">
-            "Focusing on solving high-impact, real-world problems through artificial intelligence — I don't wait to graduate to make an impact."
-        </div>
-        
-        <div class="cta-list">
-            <a href="#work" class="btn btn-black">View Projects & Systems</a>
-            <a href="mailto:Rairajat244@gmail.com" class="btn btn-outline-dark">Download Resume</a>
-            <a href="#connect" class="btn btn-outline-green">Contact Me</a>
-        </div>
-        
-        <div class="scroll-explore">Scroll to explore</div>
+    <!-- HERO SECTION -->
+    <section class="text-center py-16" id="hero">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight uppercase mb-4 leading-none">
+        HI, <span class="text-blue-400">RAJAT RAI</span>
+      </h1>
+
+      <p class="text-xl md:text-2xl font-bold text-blue-400 font-mono mb-6">
+        Co-Founder & Technical Architect @ GRIT AGENCY<br>
+        <span class="text-gray-300 text-lg font-normal">BS Student in Applied AI & Data Science @ IIT Jodhpur</span>
+      </p>
+
+      <p class="text-gray-300 max-w-2xl mx-auto text-lg mb-10 leading-relaxed">
+        Generative AI Engineer, Full-Stack Web Developer & Automation Specialist. Turning complex algorithms into autonomous, high-impact real-world systems.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#projects" class="cta-btn-primary">
+          <i class="fa-solid fa-arrow-down"></i> Explore Work
+        </a>
+        <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="px-8 py-3.5 rounded-full liquid-glass text-white font-bold hover:bg-white/10 transition border border-white/20">
+          <i class="fa-solid fa-rocket text-blue-400 mr-2"></i> GRIT AGENCY
+        </a>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="story-section" id="about">
-        <div class="story-title">About Me.</div>
-        
-        <!-- A Force. Card Box -->
-        <div class="force-card">
-            <p class="story-text" style="font-size: 1.35rem; font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-green); margin-bottom: 1rem;">
-                A Force.
-            </p>
-            <p class="story-text">
-                I'm <strong>Rajat Rai</strong> — and the name itself says something. Confidence. Boldness. Dedication.
-            </p>
-            <p class="story-text">
-                I am a student within the premium <strong>Bachelor of Science (BS) in Applied AI and Data Science at IIT Jodhpur</strong>. Driven by systemic logic, I have also navigated advanced qualification tracks with <strong>IIT Madras</strong>. My focus is entirely locked on evolving as a top-tier <strong>Generative Artificial Intelligence Engineer</strong>, dedicating my skills to creating highly efficient automation frameworks.
-            </p>
-            <p class="story-text" style="margin-bottom: 0;">
-                I run on priorities and structure. My mind works like a Python program — clean logic, clear flow, no unnecessary noise. I don't do chaos, I do systems.
-            </p>
-        </div>
+    <!-- ABOUT ME -->
+    <section id="about">
+      <div class="section-tag"><i class="fa-solid fa-user"></i> Overview</div>
+      <h2 class="section-title">ABOUT <span>ME</span></h2>
+      
+      <div class="liquid-glass p-8 md:p-10">
+        <h3 class="text-2xl font-bold text-blue-400 mb-4">A Force. Driven By Systemic Logic.</h3>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          I am <strong>Rajat Rai</strong> — student within the premium <strong>BS in Applied AI and Data Science at IIT Jodhpur</strong>. My mind operates like a clean Python program — clear flow, strong logic, zero chaos.
+        </p>
+        <p class="text-gray-400 text-lg leading-relaxed">
+          I specialize in building end-to-end AI automation workflows, Web Architectures, and LLM-powered video pipelines.
+        </p>
+      </div>
     </section>
 
-    <!-- Mindset Section -->
-    <section class="story-section" id="mindset" style="border-top: none; padding-top: 1rem;">
-        <div class="story-title" style="font-size: 2.4rem; margin-bottom: 0.5rem;">Mindset.</div>
-        <p class="story-text" style="font-size: 1.05rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            How I train my core processing units. Tap any box to unlock insight.
+    <!-- GRIT AGENCY -->
+    <section id="grit">
+      <div class="section-tag"><i class="fa-solid fa-building-user"></i> Leadership & Team</div>
+      <h2 class="section-title">GRIT <span>AGENCY</span></h2>
+
+      <div class="liquid-glass p-8 md:p-10">
+        <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+          <div>
+            <h3 class="text-3xl font-extrabold text-blue-400">GRIT AGENCY</h3>
+            <p class="text-gray-400 mt-1">Engineering Next-Gen AI, Workflow Automation & Web Systems for modern businesses.</p>
+          </div>
+          <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="cta-btn-primary py-2.5 px-6 text-sm">
+            Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+
+        <div class="team-grid">
+          <div class="liquid-glass p-5 text-center">
+            <h4 class="font-bold text-white text-lg">Yashraj</h4>
+            <p class="text-blue-400 text-xs font-mono mt-1">Founder & Visionary</p>
+          </div>
+          <div class="liquid-glass p-5 text-center border-blue-400/50">
+            <h4 class="font-bold text-white text-lg">Rajat Rai</h4>
+            <p class="text-blue-400 text-xs font-mono mt-1">Co-Founder / Architect</p>
+          </div>
+          <div class="liquid-glass p-5 text-center">
+            <h4 class="font-bold text-white text-lg">Babita</h4>
+            <p class="text-gray-400 text-xs font-mono mt-1">Chief Strategy Officer</p>
+          </div>
+          <div class="liquid-glass p-5 text-center">
+            <h4 class="font-bold text-white text-lg">Sanij</h4>
+            <p class="text-gray-400 text-xs font-mono mt-1">Operations Manager</p>
+          </div>
+          <div class="liquid-glass p-5 text-center">
+            <h4 class="font-bold text-white text-lg">Shubham</h4>
+            <p class="text-gray-400 text-xs font-mono mt-1">Head of Finance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & MINDSET -->
+    <section id="services">
+      <div class="section-tag"><i class="fa-solid fa-brain"></i> Capabilities</div>
+      <h2 class="section-title">SERVICES & <span>MINDSET</span></h2>
+
+      <div class="services-grid">
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-chess mr-2"></i> LOGIC & STRATEGY</h3>
+          <p class="text-gray-300 leading-relaxed">Applying strategic game models like Chess to optimize clean logic flow and system architecture.</p>
+        </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-gears mr-2"></i> AI AUTOMATION</h3>
+          <p class="text-gray-300 leading-relaxed">Python, Google Gemini API, ChatGPT, Streamlit, MongoDB, NotebookLM, Voicebox AI.</p>
+        </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-photo-film mr-2"></i> GENAI MEDIA</h3>
+          <p class="text-gray-300 leading-relaxed">Google Lyria Prompting, Kling 2.6 MC, Nano Banana 2 video engines.</p>
+        </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-code mr-2"></i> FULL-STACK DEV</h3>
+          <p class="text-gray-300 leading-relaxed">VS Code, Cursor AI, modern Web & Enterprise software development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="projects">
+      <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Innovation</div>
+      <h2 class="section-title">FEATURED <span>PROJECTS</span></h2>
+
+      <div class="liquid-glass p-8 md:p-10 border border-blue-400/50">
+        <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+          <div>
+            <h3 class="text-3xl font-extrabold text-blue-400">EduAniAI (EduAnim AI Pro)</h3>
+            <p class="text-cyan-300 font-semibold italic mt-1 font-mono">"Turning Static Textbooks into Interactive Movies."</p>
+          </div>
+          <button onclick="toggleAppChat()" class="cta-btn-primary py-2.5 px-6 text-sm">
+            <i class="fa-solid fa-comments"></i> Ask App AI Bot
+          </button>
+        </div>
+
+        <p class="text-gray-200 text-lg leading-relaxed my-6">
+          <strong>🚀 What is EduAniAI?</strong> EduAniAI (Developed by Reema) is an advanced AI text-to-video pipeline designed to simplify education for students in Tier-2 and Tier-3 cities across India. It converts boring NCERT chapters, textbook page captures, or complex prompts into dynamic, animated, and interactive video lectures in seconds.
         </p>
 
-        <!-- Vertical Stack Boxes -->
-        <div class="strategy-vertical-stack">
-            
-            <!-- Logic Box -->
-            <div class="strategy-card" onclick="openPopup('logic')">
-                <div class="strategy-card-header">
-                    <i class="fas fa-chess-knight"></i> Logic & Strategy
-                </div>
-                <p>Utilizing strategic game frameworks like Chess to sharpen logical reasoning and pattern recognition...</p>
-                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
-            </div>
+        <p class="text-gray-300 text-base leading-relaxed mb-6 font-mono">
+          <strong>⚙️ How it Works:</strong> Vision/Input Captures ➔ Google Gemini 2.5 Flash API Scripting ➔ gTTS Audio Sync ➔ Python MoviePy & FFmpeg Ultrafast Rendering Presets (.mp4 output).
+        </p>
 
-            <!-- Execution Box -->
-            <div class="strategy-card" onclick="openPopup('execution')">
-                <div class="strategy-card-header">
-                    <i class="fas fa-users"></i> Execution Paradigm
-                </div>
-                <p>Drawing core inspiration from data-led team-building frameworks and high-pressure system execution...</p>
-                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
-            </div>
-
-            <!-- Design Box -->
-            <div class="strategy-card" onclick="openPopup('visual')">
-                <div class="strategy-card-header">
-                    <i class="fas fa-palette"></i> Visual Strategy
-                </div>
-                <p>Applying structured color harmony and cinematic layout design principles to frontends...</p>
-                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
-            </div>
-
-            <!-- Cross Domain Box -->
-            <div class="strategy-card" onclick="openPopup('cross')">
-                <div class="strategy-card-header">
-                    <i class="fas fa-chart-line"></i> Cross-Domain
-                </div>
-                <p>Fluidly bridging operational gaps between codebase development and industrial supply chains...</p>
-                <div class="click-hint"><i class="fas fa-plus-circle"></i> Tap to read strategy</div>
-            </div>
-
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+          <div class="liquid-glass p-5">
+            <h4 class="font-bold text-blue-400 mb-2 text-lg">📘 Academic Module</h4>
+            <p class="text-gray-300 text-sm">Class 1-12 NCERT Mapped. Smart selection for subject and chapter summary videos.</p>
+          </div>
+          <div class="liquid-glass p-5">
+            <h4 class="font-bold text-blue-400 mb-2 text-lg">🤖 Character Module</h4>
+            <p class="text-gray-300 text-sm">7-minute deep-dive video simulations with avatars (Quantum Physicist, AI Teacher).</p>
+          </div>
+          <div class="liquid-glass p-5">
+            <h4 class="font-bold text-blue-400 mb-2 text-lg">🎬 Director's Module</h4>
+            <p class="text-gray-300 text-sm">Be a creator — empowers users to input custom creative prompts and produce educational movies.</p>
+          </div>
         </div>
+
+        <p class="text-cyan-400 font-mono text-sm mt-4">
+          <strong>🚀 Scalability Vision:</strong> Transitioning towards DAG (Directed Acyclic Graph) architecture & Celery async task managers for high-volume video compilation.
+        </p>
+      </div>
     </section>
 
-    <!-- Work & Systems Section -->
-    <section class="projects-section" id="work">
-        <div class="story-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">Work & Systems.</div>
-        
-        <!-- Flagship Project: EduAniAI -->
-        <div class="project-card">
-            <div class="project-title-main">EduAniAI</div>
-            <div class="project-tagline">Turning Static Textbooks into Cinematic Educational Experiences</div>
-            
-            <p>
-                EduAniAI is an advanced educational ecosystem designed to convert standard NCERT textbook curriculums (Class 1-12) into highly dynamic, character-driven animated lessons using automated scripts and AI rendering frameworks.
-            </p>
-            
-            <div class="project-heading">Key Architecture</div>
-            <ul>
-                <li><strong>AI-Powered Scripting:</strong> Orchestrated context-aware educational script generation utilizing the Google Gemini API.</li>
-                <li><strong>Cinematic Video Engine:</strong> Automated frame processing and text-to-speech synchronization using MoviePy and gTTS.</li>
-                <li><strong>Role-Play Simulations:</strong> Built interactive environment structures led by custom AI personas like a <em>Quantum Physicist</em> or <em>Calculus Ninja</em>.</li>
-                <li><strong>Vision Pipelines:</strong> Seamless conversion of raw physical textbook page captures into structured OCR data workflows.</li>
-            </ul>
-            
-            <div class="project-heading">Technical Stack & Workflow</div>
-            <div class="tech-tags">
-                <span class="tag">Python</span>
-                <span class="tag">Google Gemini API</span>
-                <span class="tag">Streamlit</span>
-                <span class="tag">MoviePy</span>
-                <span class="tag">gTTS</span>
-                <span class="tag">Cursor AI</span>
-                <span class="tag">VS Code</span>
-            </div>
+    <!-- CERTIFICATES SECTION (Clean Glass Cards - No External Fake Images) -->
+    <section id="certs">
+      <div class="section-tag"><i class="fa-solid fa-certificate"></i> Credentials</div>
+      <h2 class="section-title">HONORS & <span>CERTIFICATES</span></h2>
+
+      <div class="cert-grid-large">
+        <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="text-blue-400 text-2xl mb-3"><i class="fa-solid fa-trophy"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Top Lyria Artist</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">Awarded for transforming creative ideas into original musical experiences using Lyria-powered prompting.</p>
+          </div>
+          <p class="text-blue-400 text-xs font-mono mt-4 pt-3 border-t border-white/10">Google Ambassador (13-06-2026)</p>
         </div>
+
+        <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="text-cyan-400 text-2xl mb-3"><i class="fa-brands fa-google"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Google Ambassador (Music)</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">Certificate of Participation for showcased exceptional creativity and music synthesis skills.</p>
+          </div>
+          <p class="text-blue-400 text-xs font-mono mt-4 pt-3 border-t border-white/10">Google Ambassador (13-06-2026)</p>
+        </div>
+
+        <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="text-purple-400 text-2xl mb-3"><i class="fa-solid fa-gamepad"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Google Ambassador (Game)</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">Certificate of Participation for exceptional innovation and enthusiasm during Game Night.</p>
+          </div>
+          <p class="text-blue-400 text-xs font-mono mt-4 pt-3 border-t border-white/10">Google Ambassador (28-05-2026)</p>
+        </div>
+
+        <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="text-blue-400 text-2xl mb-3"><i class="fa-solid fa-user-graduate"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Internshala Student Partner</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">Official Appointment Letter for leading student leadership & internship awareness.</p>
+          </div>
+          <p class="text-blue-400 text-xs font-mono mt-4 pt-3 border-t border-white/10">Scholiverse Educare (20-06-2026)</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Industry Section -->
-    <section class="projects-section" id="industry" style="border-top: none; padding-top: 1rem;">
-        <div class="story-title" style="font-size: 2.8rem; margin-bottom: 1.5rem;">Industry Analytics.</div>
-        
-        <!-- Industrial Experience: Cargo Analytics -->
-        <div class="project-card">
-            <div class="project-title-main">Industrial Analytics</div>
-            <div class="project-tagline">Supply Chain Tracking & Compliance Management</div>
-            
-            <p>
-                Applied backend systems design and logistical tracking optimization inside the highly competitive handmade carpet export industry cluster located across the Bhadohi / Varanasi region.
-            </p>
-            
-            <div class="project-heading">Key Contributions</div>
-            <ul>
-                <li><strong>Customs Tracking Optimization:</strong> Engineered structured file analysis procedures for tracking critical Dadri DBK (Duty Drawback) logs.</li>
-                <li><strong>Stakeholder Data Alignment:</strong> Facilitated data compliance mapping workflows for leading sector entities like Archana Export House.</li>
-                <li><strong>Operations Automation:</strong> Reduced human processing discrepancies by modeling automated record verification frameworks.</li>
-            </ul>
-            
-            <div class="project-heading">Domain Expertise</div>
-            <div class="tech-tags">
-                <span class="tag">Logistics Data Modeling</span>
-                <span class="tag">Compliance Tracking</span>
-                <span class="tag">Operations Analytics</span>
-                <span class="tag">Process Automation</span>
-            </div>
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+      <div class="contact-redesigned-grid">
+        <div>
+          <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
+          <h2 class="text-5xl font-extrabold uppercase leading-none mb-4">
+            LET'S GET IN <span class="text-blue-400 block">TOUCH</span>
+          </h2>
+          <p class="text-gray-400 text-lg">Open for GenAI engineering roles, Web architecture & GRIT Agency partnerships.</p>
         </div>
+
+        <div class="contact-links-grid">
+          <a href="mailto:B25BS3394@iitj.ac.in" class="clean-link-card full-span">
+            <i class="fa-solid fa-graduation-cap"></i> B25BS3394@iitj.ac.in
+          </a>
+          
+          <a href="mailto:Rairajat244@gmail.com" class="clean-link-card full-span">
+            <i class="fa-solid fa-envelope"></i> Rairajat244@gmail.com
+          </a>
+
+          <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="clean-link-card">
+            <i class="fa-solid fa-rocket"></i> GRIT AGENCY
+          </a>
+
+          <a href="https://github.com/rajjuubhai16" target="_blank" class="clean-link-card">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+
+          <a href="https://www.linkedin.com/in/rajat-rai-87b829328" target="_blank" class="clean-link-card">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
+
+          <a href="https://www.instagram.com/_codewithrajat" target="_blank" class="clean-link-card">
+            <i class="fa-brands fa-instagram"></i> Instagram
+          </a>
+
+          <a href="https://youtube.com/@jee_with_rajat" target="_blank" class="clean-link-card full-span">
+            <i class="fa-brands fa-youtube text-red-500"></i> JEE with Rajat (YouTube)
+          </a>
+        </div>
+      </div>
+      
+      <p class="text-center text-gray-500 text-sm mt-16">© 2026 Rajat Rai. All rights reserved.</p>
     </section>
 
-    <!-- Global Interactive Modal/Popup Structure -->
-    <div class="modal-overlay" id="popupModal" onclick="closePopupOnOverlay(event)">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closePopup()">&times;</button>
-            <div id="modalHeader" class="modal-header"></div>
-            <div id="modalBody" class="modal-body"></div>
+  </div>
+
+  <!-- CHATBOT 1: PERSONAL BOT -->
+  <div class="chat-widget-box">
+    <button class="chat-toggle-btn" onclick="togglePersonalChat()">
+      <i class="fa-solid fa-robot"></i> Ask Rajat AI
+    </button>
+
+    <div class="chat-window-popup" id="personal-chat-window">
+      <div class="chat-header">
+        <h4 class="font-bold text-white text-sm">Rajat Rai AI Assistant</h4>
+        <span onclick="togglePersonalChat()" class="cursor-pointer text-blue-400 font-bold">✕</span>
+      </div>
+      <div class="chat-body" id="personalChatBody">
+        <div class="msg ai-msg">
+          Hi! I am **Rajat Rai AI Assistant**. Ask me about Rajat's IIT Jodhpur studies, GRIT AGENCY, skills, or contact details!
         </div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="personalChatInput" placeholder="Ask e.g. GRIT AGENCY..." onkeypress="if(event.key==='Enter') sendPersonalChat();">
+        <button onclick="sendPersonalChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
     </div>
+  </div>
 
-    <!-- Connect / Redesigned Premium Grid Section -->
-    <footer id="connect">
-        <h4>Let's Connect</h4>
-        <p class="footer-subtitle">Let's build systems that scale.</p>
-        
-        <div class="social-grid">
-            
-            <!-- Instagram Tech -->
-            <a href="https://www.instagram.com/_codewithrajat?igsh=djVsYmRxYnk3MGp1" class="social-box" target="_blank">
-                <i class="fab fa-instagram"></i>
-                <span>@codewithrajat</span>
-            </a>
-
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/in/rajat-rai-87b829328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-box" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://youtube.com/@jee_with_rajat?si=yee5UizoqPyU9dMw" class="social-box" target="_blank">
-                <i class="fab fa-youtube"></i>
-                <span>YouTube</span>
-            </a>
-
-            <!-- Instagram Personal -->
-            <a href="https://www.instagram.com/_rajjuubhai16" class="social-box" target="_blank">
-                <i class="fab fa-instagram"></i>
-                <span>Personal IG</span>
-            </a>
-
-            <!-- Email -->
-            <a href="mailto:Rairajat244@gmail.com" class="social-box grid-email">
-                <i class="fas fa-envelope"></i>
-                <span>Rairajat244@gmail.com</span>
-            </a>
-
+  <!-- CHATBOT 2: EDUANIAI APP BOT -->
+  <div class="chat-widget-box" style="right: auto; left: 25px; bottom: 25px;">
+    <div class="chat-window-popup" id="app-chat-window" style="right: auto; left: 0;">
+      <div class="chat-header">
+        <h4 class="font-bold text-white text-sm">EduAniAI Pro Knowledge Bot</h4>
+        <span onclick="toggleAppChat()" class="cursor-pointer text-blue-400 font-bold">✕</span>
+      </div>
+      <div class="chat-body" id="appChatBody">
+        <div class="msg ai-msg">
+          Welcome! I am the **EduAniAI Knowledge Assistant** (Trained on Reema's Developer Database). Ask me about Pitch, Architecture, Academic/Character Modules, Gemini 2.5 Flash API, or FFmpeg presets!
         </div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="appChatInput" placeholder="Ask e.g. Pitch, Modules..." onkeypress="if(event.key==='Enter') sendAppChat();">
+        <button onclick="sendAppChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE.JS 3D VALLEY & BLUE FOG ENGINE -->
+  <script>
+    const canvas = document.getElementById('three-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Deep Blue Fog Effect
+    scene.fog = new THREE.FogExp2(0x02060d, 0.016);
+
+    // 3D Building Valley Generation
+    const buildingGroup = new THREE.Group();
+    const buildingGeo = new THREE.BoxGeometry(1, 1, 1);
+    
+    const buildingMat = new THREE.MeshStandardMaterial({
+      color: 0x040e1a,
+      roughness: 0.3,
+      metalness: 0.8
+    });
+
+    const wireMat = new THREE.MeshBasicMaterial({ color: 0x00f2fe, wireframe: true });
+
+    for (let i = -15; i < 15; i++) {
+      for (let j = -15; j < 15; j++) {
+        if (Math.abs(i) < 3) continue; // Center Valley Passage
+
+        const height = Math.random() * 14 + 2;
+        const mesh = new THREE.Mesh(buildingGeo, buildingMat);
+        mesh.scale.set(2, height, 2);
+        mesh.position.set(i * 3.5 + (Math.random() - 0.5), height / 2 - 10, j * 3.5);
         
-        <p class="copyright">&copy; 2026 Rajat Rai. Designed for impact.</p>
-    </footer>
+        const wire = new THREE.Mesh(buildingGeo, wireMat);
+        wire.scale.set(2.02, height + 0.05, 2.02);
+        wire.position.copy(mesh.position);
 
-    <!-- Popup Control JavaScript Logic -->
-    <script>
-        const popupData = {
-            logic: {
-                title: '<i class="fas fa-chess-knight"></i> Logic & Strategy',
-                body: 'Utilizing strategic game frameworks like Chess to sharpen logical reasoning, pattern recognition, and structural troubleshooting in programming sequences. Every move is tactical; every bug is a puzzle requiring clean tactical execution.'
-            },
-            execution: {
-                title: '<i class="fas fa-users"></i> Execution Paradigm',
-                body: 'A keen follower of cricket analytics and strategic captaincy, drawing core inspiration from data-led team-building frameworks and high-pressure system execution methodologies. Leading code architectures requires the same composure as managing a high-stakes strategic defense.'
-            },
-            visual: {
-                title: '<i class="fas fa-palette"></i> Visual Strategy',
-                body: 'Passionate about cinematic, dark, and minimalist visual aesthetics, applying structured color harmony and layout design principles directly to digital platform frontends and user experiences. Code must not only execute flawlessly, but it must also present flawlessly.'
-            },
-            cross: {
-                title: '<i class="fas fa-chart-line"></i> Cross-Domain Capability',
-                body: 'Demonstrated adaptability by fluidly bridging the operational gaps between granular, pure codebase development and high-level industrial supply chain frameworks. This analytical bridge ensures engineered solutions are perfectly tuned to clear ground-level problems.'
-            }
-        };
+        buildingGroup.add(mesh);
+        buildingGroup.add(wire);
+      }
+    }
+    scene.add(buildingGroup);
 
-        function openPopup(key) {
-            const modal = document.getElementById('popupModal');
-            document.getElementById('modalHeader').innerHTML = popupData[key].title;
-            document.getElementById('modalBody').innerText = popupData[key].body;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-        }
+    // Blue Fog Particle Smoke Engine
+    const particleGeo = new THREE.BufferGeometry();
+    const particleCount = 400;
+    const posArray = new Float32Array(particleCount * 3);
 
-        function closePopup() {
-            const modal = document.getElementById('popupModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; 
-        }
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      posArray[i] = (Math.random() - 0.5) * 60;
+      posArray[i + 1] = (Math.random() - 0.5) * 40;
+      posArray[i + 2] = (Math.random() - 0.5) * 60;
+    }
 
-        function closePopupOnOverlay(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                closePopup();
-            }
-        }
-    </script>
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.25,
+      color: 0x00f2fe,
+      transparent: true,
+      opacity: 0.55
+    });
 
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    scene.add(ambientLight);
+
+    const blueLight = new THREE.PointLight(0x00f2fe, 3, 50);
+    blueLight.position.set(0, 5, 0);
+    scene.add(blueLight);
+
+    camera.position.z = 15;
+    camera.position.y = 2;
+
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      buildingGroup.position.z += 0.03;
+      if (buildingGroup.position.z > 3.5) buildingGroup.position.z = 0;
+
+      particles.rotation.y += 0.001;
+      particles.position.y += 0.005;
+      if (particles.position.y > 5) particles.position.y = -5;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // CHATBOT 1 LOGIC
+    let isPersonalChatOpen = false;
+    function togglePersonalChat() {
+      const win = document.getElementById('personal-chat-window');
+      win.style.display = isPersonalChatOpen ? 'none' : 'flex';
+      isPersonalChatOpen = !isPersonalChatOpen;
+    }
+
+    function sendPersonalChat() {
+      const input = document.getElementById('personalChatInput');
+      const text = input.value.trim(); if (!text) return;
+      const chatBody = document.getElementById('personalChatBody');
+      chatBody.innerHTML += `<div class="msg user-msg">${text}</div>`;
+      input.value = ''; chatBody.scrollTop = chatBody.scrollHeight;
+
+      setTimeout(() => {
+        let reply = "I can help you with Rajat Rai's portfolio, GRIT AGENCY, IIT Jodhpur studies, or contact info!";
+        const q = text.toLowerCase();
+        if (q.includes('grit') || q.includes('agency')) reply = "**GRIT AGENCY** (https://rajjuubhai16.github.io/GRIT-AGENCY-/) is a next-gen tech agency!";
+        else if (q.includes('who') || q.includes('rajat')) reply = "Rajat Rai is Co-Founder & Technical Architect at **GRIT AGENCY** and BS student at **IIT Jodhpur**.";
+        else if (q.includes('email') || q.includes('contact')) reply = "Reach Rajat at IIT Email: **B25BS3394@iitj.ac.in** or Personal Email: **Rairajat244@gmail.com**.";
+
+        chatBody.innerHTML += `<div class="msg ai-msg">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 400);
+    }
+
+    // CHATBOT 2 LOGIC
+    let isAppChatOpen = false;
+    function toggleAppChat() {
+      const window = document.getElementById('app-chat-window');
+      window.style.display = isAppChatOpen ? 'none' : 'flex';
+      isAppChatOpen = !isAppChatOpen;
+    }
+
+    function sendAppChat() {
+      const input = document.getElementById('appChatInput');
+      const text = input.value.trim(); if (!text) return;
+      const chatBody = document.getElementById('appChatBody');
+      chatBody.innerHTML += `<div class="msg user-msg">${text}</div>`;
+      input.value = ''; chatBody.scrollTop = chatBody.scrollHeight;
+
+      setTimeout(() => {
+        let reply = "Ask me about EduAniAI's Elevator Pitch, Architecture, Academic/Character/Director Modules!";
+        const q = text.toLowerCase();
+        if (q.includes('what') || q.includes('pitch') || q.includes('eduaniai')) reply = "**EduAniAI (EduAnim AI Pro)** (Created by Reema) is an advanced AI text-to-video pipeline turning textbooks into movies!";
+        else if (q.includes('how') || q.includes('work')) reply = "**Core Pipeline:** Vision Input -> Gemini 2.5 Flash API Scripting -> gTTS Audio Sync -> Python MoviePy & FFmpeg Rendering.";
+
+        chatBody.innerHTML += `<div class="msg ai-msg">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 400);
+    }
+  </script>
 </body>
 </html>
+
