@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajat Rai | Co-Founder GRIT AGENCY & GenAI Architect</title>
+  <title>Rajat Rai | GenAI Architect</title>
   
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -168,17 +168,22 @@
     section:last-of-type { border-bottom: none; }
 
     /* Grids */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin-top: 22px;
-    }
-
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
     }
 
     .cert-grid-large {
@@ -187,47 +192,46 @@
       gap: 22px;
     }
 
-    /* Contact Links Grid */
+    /* Contact Links Grid (Icon Only Layout) */
     .contact-redesigned-grid {
       display: grid;
-      grid-template-columns: 1fr 1.3fr;
+      grid-template-columns: 1fr 1fr;
       gap: 36px;
       align-items: center;
     }
 
     .contact-links-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 14px;
+      justify-content: flex-start;
     }
 
     .clean-link-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(0, 242, 254, 0.2);
-      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      width: 52px;
+      height: 52px;
       border-radius: 16px;
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
       transition: all 0.25s ease;
     }
     .clean-link-card i {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--accent-blue);
+      transition: color 0.25s ease;
     }
     .clean-link-card:hover {
       background: var(--accent-blue);
-      color: #02060d;
       border-color: var(--accent-blue);
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(0, 242, 254, 0.4);
     }
     .clean-link-card:hover i { color: #02060d; }
-    .clean-link-card.full-span { grid-column: span 2; }
 
     /* AI Chatbots */
     .chat-widget-box {
@@ -310,8 +314,6 @@
 
     @media (max-width: 880px) {
       .contact-redesigned-grid { grid-template-columns: 1fr; }
-      .contact-links-grid { grid-template-columns: 1fr; }
-      .clean-link-card.full-span { grid-column: span 1; }
       .viewport-container { padding: 25px 18px; border-radius: 24px; }
       header { flex-direction: column; gap: 15px; }
       .nav-pill { flex-wrap: wrap; justify-content: center; gap: 12px; }
@@ -331,7 +333,7 @@
       <a href="#" class="brand text-2xl font-extrabold text-white tracking-wider">RAJAT<span class="text-blue-400">.AI</span></a>
       <nav class="nav-pill hidden md:flex items-center gap-6">
         <a href="#about" class="text-gray-300 hover:text-blue-400 font-semibold transition">About</a>
-        <a href="#grit" class="text-gray-300 hover:text-blue-400 font-semibold transition">GRIT Agency</a>
+        <a href="#skills" class="text-gray-300 hover:text-blue-400 font-semibold transition">Skills</a>
         <a href="#services" class="text-gray-300 hover:text-blue-400 font-semibold transition">Mindset</a>
         <a href="#projects" class="text-gray-300 hover:text-blue-400 font-semibold transition">Projects</a>
         <a href="#certs" class="text-gray-300 hover:text-blue-400 font-semibold transition">Certificates</a>
@@ -346,7 +348,7 @@
       </h1>
 
       <p class="text-xl md:text-2xl font-bold text-blue-400 font-mono mb-6">
-        Co-Founder & Technical Architect @ GRIT AGENCY<br>
+        GenAI Architect & Developer<br>
         <span class="text-gray-300 text-lg font-normal">BS Student in Applied AI & Data Science @ IIT Jodhpur</span>
       </p>
 
@@ -358,9 +360,6 @@
         <a href="#projects" class="cta-btn-primary">
           <i class="fa-solid fa-arrow-down"></i> Explore Work
         </a>
-        <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="px-8 py-3.5 rounded-full liquid-glass text-white font-bold hover:bg-white/10 transition border border-white/20">
-          <i class="fa-solid fa-rocket text-blue-400 mr-2"></i> GRIT AGENCY
-        </a>
       </div>
     </section>
 
@@ -370,53 +369,40 @@
       <h2 class="section-title">ABOUT <span>ME</span></h2>
       
       <div class="liquid-glass p-8 md:p-10">
-        <h3 class="text-2xl font-bold text-blue-400 mb-4">A Force. Driven By Systemic Logic.</h3>
+        <h3 class="text-2xl font-bold text-blue-400 mb-4">A Force. Driven By Deep Logic & Research.</h3>
         <p class="text-gray-300 text-lg leading-relaxed mb-4">
-          I am <strong>Rajat Rai</strong> — student within the premium <strong>BS in Applied AI and Data Science at IIT Jodhpur</strong>. My mind operates like a clean Python program — clear flow, strong logic, zero chaos.
+          I am <strong>Rajat Rai</strong> — an AI Architect and student in the <strong>BS in Applied AI and Data Science at IIT Jodhpur</strong>. My mind operates like a clean Python program: precise, highly logical, and zero-chaos. 
+        </p>
+        <p class="text-gray-300 text-lg leading-relaxed mb-4">
+          I know how to use AI to its absolute maximum potential, turning it into a superpower for building real-world systems. My core strength lies in <strong>deep research</strong> — whenever I pick up a concept, a tech stack, or a problem, I dive deep into its roots, break down its backend architecture, analyze every single moving part, and pull out a solid, clear conclusion.
         </p>
         <p class="text-gray-400 text-lg leading-relaxed">
-          I specialize in building end-to-end AI automation workflows, Web Architectures, and LLM-powered video pipelines.
+          From building autonomous AI pipelines like <em>EduAniAI</em> to executing complex automation workflows, I don't just scratch the surface; I master the core logic.
         </p>
       </div>
     </section>
 
-    <!-- GRIT AGENCY -->
-    <section id="grit">
-      <div class="section-tag"><i class="fa-solid fa-building-user"></i> Leadership & Team</div>
-      <h2 class="section-title">GRIT <span>AGENCY</span></h2>
+    <!-- SKILLS & EXPERTISE -->
+    <section id="skills">
+      <div class="section-tag"><i class="fa-solid fa-code"></i> Technical Stack</div>
+      <h2 class="section-title">MY <span>SKILLS</span></h2>
 
-      <div class="liquid-glass p-8 md:p-10">
-        <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
-          <div>
-            <h3 class="text-3xl font-extrabold text-blue-400">GRIT AGENCY</h3>
-            <p class="text-gray-400 mt-1">Engineering Next-Gen AI, Workflow Automation & Web Systems for modern businesses.</p>
-          </div>
-          <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="cta-btn-primary py-2.5 px-6 text-sm">
-            Visit Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
+      <div class="skills-grid">
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-brain mr-2"></i> AI & PROMPT ENGINEERING</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Advanced ChatGPT & Google Gemini API integration, multi-stage prompt optimization, white coding execution, and maximum AI leverage.</p>
         </div>
-
-        <div class="team-grid">
-          <div class="liquid-glass p-5 text-center">
-            <h4 class="font-bold text-white text-lg">Yashraj</h4>
-            <p class="text-blue-400 text-xs font-mono mt-1">Founder & Visionary</p>
-          </div>
-          <div class="liquid-glass p-5 text-center border-blue-400/50">
-            <h4 class="font-bold text-white text-lg">Rajat Rai</h4>
-            <p class="text-blue-400 text-xs font-mono mt-1">Co-Founder / Architect</p>
-          </div>
-          <div class="liquid-glass p-5 text-center">
-            <h4 class="font-bold text-white text-lg">Babita</h4>
-            <p class="text-gray-400 text-xs font-mono mt-1">Chief Strategy Officer</p>
-          </div>
-          <div class="liquid-glass p-5 text-center">
-            <h4 class="font-bold text-white text-lg">Sanij</h4>
-            <p class="text-gray-400 text-xs font-mono mt-1">Operations Manager</p>
-          </div>
-          <div class="liquid-glass p-5 text-center">
-            <h4 class="font-bold text-white text-lg">Shubham</h4>
-            <p class="text-gray-400 text-xs font-mono mt-1">Head of Finance</p>
-          </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-terminal mr-2"></i> CORE PROGRAMMING</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Python (Logic building, backend automation, and script writing), systematic coding structures, and clean development flows.</p>
+        </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-globe mr-2"></i> WEB DEVELOPMENT</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">HTML5, CSS3, JavaScript fundamentals, responsive modern layouts, and interactive frontend deployments.</p>
+        </div>
+        <div class="liquid-glass p-8">
+          <h3 class="text-xl font-bold text-blue-400 mb-3"><i class="fa-solid fa-magnifying-glass-chart mr-2"></i> RESEARCH & CONTENT</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Deep backend research, reverse-engineering concepts to conclusions, technical documentation, and professional content writing.</p>
         </div>
       </div>
     </section>
@@ -451,52 +437,58 @@
       <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Innovation</div>
       <h2 class="section-title">FEATURED <span>PROJECTS</span></h2>
 
-      <div class="liquid-glass p-8 md:p-10 border border-blue-400/50">
-        <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+      <div class="projects-grid">
+        <!-- PROJECT 1: APEX AUTOMOBILI -->
+        <div class="liquid-glass p-8 border border-blue-400/50 flex flex-col justify-between">
           <div>
-            <h3 class="text-3xl font-extrabold text-blue-400">EduAniAI (EduAnim AI Pro)</h3>
-            <p class="text-cyan-300 font-semibold italic mt-1 font-mono">"Turning Static Textbooks into Interactive Movies."</p>
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-2xl font-extrabold text-blue-400">Apex Automobili</h3>
+              <a href="https://rajjuubhai16.github.io/ApexAutomobili/" target="_blank" class="clean-link-card" style="width: 40px; height: 40px; border-radius: 12px;">
+                <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.9rem;"></i>
+              </a>
+            </div>
+            <p class="text-cyan-300 font-semibold italic text-sm mb-4 font-mono">"Engineering Beyond Physics"</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              A high-end hypercar showroom web application featuring 3D Motion showcases, 50+ Hypercars fleet specs, Glass Showroom, Side-by-Side comparison tools, and an interactive Bespoke Customizer.
+            </p>
           </div>
-          <button onclick="toggleAppChat()" class="cta-btn-primary py-2.5 px-6 text-sm">
-            <i class="fa-solid fa-comments"></i> Ask App AI Bot
-          </button>
+          <p class="text-blue-400 font-mono text-xs pt-3 border-t border-white/10">Tech: HTML, CSS, JavaScript, UI/UX Design</p>
         </div>
 
-        <p class="text-gray-200 text-lg leading-relaxed my-6">
-          <strong>🚀 What is EduAniAI?</strong> EduAniAI (Developed by Reema) is an advanced AI text-to-video pipeline designed to simplify education for students in Tier-2 and Tier-3 cities across India. It converts boring NCERT chapters, textbook page captures, or complex prompts into dynamic, animated, and interactive video lectures in seconds.
-        </p>
-
-        <p class="text-gray-300 text-base leading-relaxed mb-6 font-mono">
-          <strong>⚙️ How it Works:</strong> Vision/Input Captures ➔ Google Gemini 2.5 Flash API Scripting ➔ gTTS Audio Sync ➔ Python MoviePy & FFmpeg Ultrafast Rendering Presets (.mp4 output).
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
-          <div class="liquid-glass p-5">
-            <h4 class="font-bold text-blue-400 mb-2 text-lg">📘 Academic Module</h4>
-            <p class="text-gray-300 text-sm">Class 1-12 NCERT Mapped. Smart selection for subject and chapter summary videos.</p>
+        <!-- PROJECT 2: EDUANIAI -->
+        <div class="liquid-glass p-8 border border-blue-400/50 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-2xl font-extrabold text-blue-400">EduAniAI (EduAnim AI Pro)</h3>
+              <button onclick="toggleAppChat()" class="clean-link-card" style="width: 40px; height: 40px; border-radius: 12px;" title="Ask App AI Bot">
+                <i class="fa-solid fa-comments" style="font-size: 0.9rem;"></i>
+              </button>
+            </div>
+            <p class="text-cyan-300 font-semibold italic text-sm mb-4 font-mono">"Turning Textbooks into Movies."</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              An advanced AI text-to-video pipeline converting NCERT textbooks and prompts into dynamic animated video lectures using Gemini Flash API, gTTS, Python MoviePy, and FFmpeg presets.
+            </p>
           </div>
-          <div class="liquid-glass p-5">
-            <h4 class="font-bold text-blue-400 mb-2 text-lg">🤖 Character Module</h4>
-            <p class="text-gray-300 text-sm">7-minute deep-dive video simulations with avatars (Quantum Physicist, AI Teacher).</p>
-          </div>
-          <div class="liquid-glass p-5">
-            <h4 class="font-bold text-blue-400 mb-2 text-lg">🎬 Director's Module</h4>
-            <p class="text-gray-300 text-sm">Be a creator — empowers users to input custom creative prompts and produce educational movies.</p>
-          </div>
+          <p class="text-blue-400 font-mono text-xs pt-3 border-t border-white/10">Tech: Python, Gemini API, MoviePy, FFmpeg</p>
         </div>
-
-        <p class="text-cyan-400 font-mono text-sm mt-4">
-          <strong>🚀 Scalability Vision:</strong> Transitioning towards DAG (Directed Acyclic Graph) architecture & Celery async task managers for high-volume video compilation.
-        </p>
       </div>
     </section>
 
-    <!-- CERTIFICATES SECTION (Clean Glass Cards - No External Fake Images) -->
+    <!-- CERTIFICATES SECTION -->
     <section id="certs">
       <div class="section-tag"><i class="fa-solid fa-certificate"></i> Credentials</div>
       <h2 class="section-title">HONORS & <span>CERTIFICATES</span></h2>
 
       <div class="cert-grid-large">
+        <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between border border-blue-400/40">
+          <div>
+            <div class="text-blue-400 text-2xl mb-3"><i class="fa-solid fa-rocket"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Bharatiya Antariksh Hackathon</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">Certificate of Participation for successful idea submission in the national space innovation initiative.</p>
+          </div>
+          <p class="text-blue-400 text-xs font-mono mt-4 pt-3 border-t border-white/10">ISRO (2026)</p>
+        </div>
+
         <div class="liquid-glass p-6 rounded-2xl flex flex-col justify-between">
           <div>
             <div class="text-blue-400 text-2xl mb-3"><i class="fa-solid fa-trophy"></i></div>
@@ -535,7 +527,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION (Icon-Only Buttons) -->
     <section id="contact">
       <div class="contact-redesigned-grid">
         <div>
@@ -543,36 +535,32 @@
           <h2 class="text-5xl font-extrabold uppercase leading-none mb-4">
             LET'S GET IN <span class="text-blue-400 block">TOUCH</span>
           </h2>
-          <p class="text-gray-400 text-lg">Open for GenAI engineering roles, Web architecture & GRIT Agency partnerships.</p>
+          <p class="text-gray-400 text-lg">Open for GenAI engineering roles, Web architecture & collaborative projects.</p>
         </div>
 
         <div class="contact-links-grid">
-          <a href="mailto:B25BS3394@iitj.ac.in" class="clean-link-card full-span">
-            <i class="fa-solid fa-graduation-cap"></i> B25BS3394@iitj.ac.in
+          <a href="mailto:B25BS3394@iitj.ac.in" title="IIT Email" class="clean-link-card">
+            <i class="fa-solid fa-graduation-cap"></i>
           </a>
           
-          <a href="mailto:Rairajat244@gmail.com" class="clean-link-card full-span">
-            <i class="fa-solid fa-envelope"></i> Rairajat244@gmail.com
+          <a href="mailto:Rairajat244@gmail.com" title="Personal Email" class="clean-link-card">
+            <i class="fa-solid fa-envelope"></i>
           </a>
 
-          <a href="https://rajjuubhai16.github.io/GRIT-AGENCY-/" target="_blank" class="clean-link-card">
-            <i class="fa-solid fa-rocket"></i> GRIT AGENCY
+          <a href="https://github.com/rajjuubhai16" target="_blank" title="GitHub" class="clean-link-card">
+            <i class="fa-brands fa-github"></i>
           </a>
 
-          <a href="https://github.com/rajjuubhai16" target="_blank" class="clean-link-card">
-            <i class="fa-brands fa-github"></i> GitHub
+          <a href="https://www.linkedin.com/in/rajat-rai-87b829328" target="_blank" title="LinkedIn" class="clean-link-card">
+            <i class="fa-brands fa-linkedin"></i>
           </a>
 
-          <a href="https://www.linkedin.com/in/rajat-rai-87b829328" target="_blank" class="clean-link-card">
-            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          <a href="https://www.instagram.com/_codewithrajat" target="_blank" title="Instagram" class="clean-link-card">
+            <i class="fa-brands fa-instagram"></i>
           </a>
 
-          <a href="https://www.instagram.com/_codewithrajat" target="_blank" class="clean-link-card">
-            <i class="fa-brands fa-instagram"></i> Instagram
-          </a>
-
-          <a href="https://youtube.com/@jee_with_rajat" target="_blank" class="clean-link-card full-span">
-            <i class="fa-brands fa-youtube text-red-500"></i> JEE with Rajat (YouTube)
+          <a href="https://youtube.com/@jee_with_rajat" target="_blank" title="YouTube" class="clean-link-card">
+            <i class="fa-brands fa-youtube"></i>
           </a>
         </div>
       </div>
@@ -595,11 +583,11 @@
       </div>
       <div class="chat-body" id="personalChatBody">
         <div class="msg ai-msg">
-          Hi! I am **Rajat Rai AI Assistant**. Ask me about Rajat's IIT Jodhpur studies, GRIT AGENCY, skills, or contact details!
+          Hi! I am **Rajat Rai AI Assistant**. Ask me about Rajat's deep research, white coding, Apex Automobili project, or IIT Jodhpur studies!
         </div>
       </div>
       <div class="chat-footer">
-        <input type="text" id="personalChatInput" placeholder="Ask e.g. GRIT AGENCY..." onkeypress="if(event.key==='Enter') sendPersonalChat();">
+        <input type="text" id="personalChatInput" placeholder="Ask e.g. Apex Automobili, Skills..." onkeypress="if(event.key==='Enter') sendPersonalChat();">
         <button onclick="sendPersonalChat()"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
@@ -614,7 +602,7 @@
       </div>
       <div class="chat-body" id="appChatBody">
         <div class="msg ai-msg">
-          Welcome! I am the **EduAniAI Knowledge Assistant** (Trained on Reema's Developer Database). Ask me about Pitch, Architecture, Academic/Character Modules, Gemini 2.5 Flash API, or FFmpeg presets!
+          Welcome! I am the **EduAniAI Knowledge Assistant** (Trained on Rajat's Developer Database). Ask me about Pitch, Architecture, Academic/Character Modules, or Gemini API!
         </div>
       </div>
       <div class="chat-footer">
@@ -722,7 +710,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // CHATBOT 1 LOGIC
+    // CHATBOT 1 LOGIC (UPDATED WITH APEX AUTOMOBILI PROJECT)
     let isPersonalChatOpen = false;
     function togglePersonalChat() {
       const win = document.getElementById('personal-chat-window');
@@ -738,11 +726,22 @@
       input.value = ''; chatBody.scrollTop = chatBody.scrollHeight;
 
       setTimeout(() => {
-        let reply = "I can help you with Rajat Rai's portfolio, GRIT AGENCY, IIT Jodhpur studies, or contact info!";
+        let reply = "I can help you with Rajat Rai's portfolio, Apex Automobili project, white coding, or technical stack!";
         const q = text.toLowerCase();
-        if (q.includes('grit') || q.includes('agency')) reply = "**GRIT AGENCY** (https://rajjuubhai16.github.io/GRIT-AGENCY-/) is a next-gen tech agency!";
-        else if (q.includes('who') || q.includes('rajat')) reply = "Rajat Rai is Co-Founder & Technical Architect at **GRIT AGENCY** and BS student at **IIT Jodhpur**.";
-        else if (q.includes('email') || q.includes('contact')) reply = "Reach Rajat at IIT Email: **B25BS3394@iitj.ac.in** or Personal Email: **Rairajat244@gmail.com**.";
+        
+        if (q.includes('who') || q.includes('rajat') || q.includes('about')) {
+          reply = "Rajat Rai is an AI Architect and BS student in Applied AI and Data Science at **IIT Jodhpur**. He specializes in deep research, white coding, and building autonomous systems.";
+        } else if (q.includes('apex') || q.includes('car') || q.includes('automobili')) {
+          reply = "**Apex Automobili** is Rajat's featured hypercar showroom web app featuring 3D Motion showcases, 50+ Hypercars fleet specs, Glass Showroom, and a Bespoke Customizer! Link: https://rajjuubhai16.github.io/ApexAutomobili/";
+        } else if (q.includes('skill') || q.includes('coding') || q.includes('white') || q.includes('prompt')) {
+          reply = "Rajat excels in **White Coding** and **Advanced Prompt Engineering**! He structures logic cleanly, writes multi-stage prompts to extract peak performance from AI, and masters Python backend scripting.";
+        } else if (q.includes('research') || q.includes('deep')) {
+          reply = "Rajat's superpower is **Deep Research**: whenever he handles a problem or tech stack, he reverse-engineers the roots, breaks down the backend architecture, and drives robust conclusions.";
+        } else if (q.includes('certificate') || q.includes('isro') || q.includes('hackathon')) {
+          reply = "Rajat holds top credentials including the **ISRO Bharatiya Antariksh Hackathon 2026** certificate, Google Lyria Artist award, and Google Ambassadorships!";
+        } else if (q.includes('email') || q.includes('contact')) {
+          reply = "Reach Rajat at IIT Email: **B25BS3394@iitj.ac.in** or Personal Email: **Rairajat244@gmail.com**.";
+        }
 
         chatBody.innerHTML += `<div class="msg ai-msg">${reply}</div>`;
         chatBody.scrollTop = chatBody.scrollHeight;
@@ -757,7 +756,7 @@
       isAppChatOpen = !isAppChatOpen;
     }
 
-    function sendAppChat() {
+    2function sendAppChat() {
       const input = document.getElementById('appChatInput');
       const text = input.value.trim(); if (!text) return;
       const chatBody = document.getElementById('appChatBody');
@@ -767,7 +766,7 @@
       setTimeout(() => {
         let reply = "Ask me about EduAniAI's Elevator Pitch, Architecture, Academic/Character/Director Modules!";
         const q = text.toLowerCase();
-        if (q.includes('what') || q.includes('pitch') || q.includes('eduaniai')) reply = "**EduAniAI (EduAnim AI Pro)** (Created by Reema) is an advanced AI text-to-video pipeline turning textbooks into movies!";
+        if (q.includes('what') || q.includes('pitch') || q.includes('eduaniai')) reply = "**EduAniAI (EduAnim AI Pro)** (Created by Rajat) is an advanced AI text-to-video pipeline turning textbooks into movies!";
         else if (q.includes('how') || q.includes('work')) reply = "**Core Pipeline:** Vision Input -> Gemini 2.5 Flash API Scripting -> gTTS Audio Sync -> Python MoviePy & FFmpeg Rendering.";
 
         chatBody.innerHTML += `<div class="msg ai-msg">${reply}</div>`;
@@ -777,4 +776,3 @@
   </script>
 </body>
 </html>
-
