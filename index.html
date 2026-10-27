@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rajat Rai — GenAI Architect, Systems Engineer & Founder at Team GRIT. Pursuing BS in Applied AI & Data Science at IIT Jodhpur. Architecting autonomous pipelines, LLM systems, and high-concurrency media automation.">
+  <meta name="keywords" content="Rajat Rai, GenAI Architect, Team GRIT, IIT Jodhpur, EduAniAI, Apex Automobili, GRIT Work OS, Machine Learning, Python, Autonomous Systems">
+  <meta name="author" content="Rajat Rai">
+  <title>Rajat Rai | GenAI Architect & Tech Lead | IIT Jodhpur</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    :root {
+      --bg-space: #030712;
+      --card-bg: rgba(10, 16, 31, 0.65);
+      --card-border: rgba(56, 189, 248, 0.16);
+      --card-border-hover: rgba(56, 189, 248, 0.5);
+      --cyan-glow: #00f2fe;
+      --sky-glow: #38bdf8;
+      --indigo-glow: #818cf8;
+      --purple-glow: #c084fc;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: var(--font-body);
+    }
+
+    /* Custom Cyber Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020611;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--cyan-glow);
+    }
+
+    body {
+      background: radial-gradient(ellipse at 50% -10%, #0c2146 0%, #061329 35%, #030712 75%, #02040a 100%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 16px;
+      position: relative;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-display);
+    }
+    .font-code {
+      font-family: var(--font-mono);
+    }
+
+    /* Three.js Canvas Layer */
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Master Glass Viewport Shell */
+    .master-frame {
+      width: 100%;
+      max-width: 1300px;
+      margin: 10px auto 40px;
+      border-radius: 36px;
+      background: rgba(5, 12, 28, 0.52);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow: 0 40px 140px rgba(0, 0, 0, 0.95), inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 0 60px rgba(0, 242, 254, 0.08);
+      position: relative;
+      z-index: 10;
+      padding: 36px 36px 64px;
+    }
+
+    /* Bento Spotlight Glass Cards */
+    .bento-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-card:hover {
+      border-color: var(--card-border-hover);
+      box-shadow: 0 20px 45px rgba(0, 242, 254, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+      transform: translateY(-4px);
+      background: rgba(12, 22, 45, 0.72);
+    }
+
+    /* Spotlight gradient follow effect */
+    .spotlight-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bento-card:hover .spotlight-overlay {
+      opacity: 1;
+    }
+
+    /* Glow Utilities */
+    .text-glow {
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.55);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Executive Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+      margin-bottom: 38px;
+      position: relative;
+    }
+    .nav-capsule {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 9px 26px;
+      border-radius: 9999px;
+      backdrop-filter: blur(14px);
+    }
+
+    /* Buttons */
+    .btn-hyper {
+      background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 100%);
+      color: #020611;
+      font-weight: 800;
+      padding: 13px 30px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 242, 254, 0.35);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-hyper:hover {
+      background: #ffffff;
+      color: #020611;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(0, 242, 254, 0.65);
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.035);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-glass:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--cyan-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 242, 254, 0.2);
+    }
+
+    /* Section Headers */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+      position: relative;
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .tag-badge {
+      color: var(--cyan-glow);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 6px 14px;
+      border-radius: 9999px;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+    .section-title span {
+      background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 50%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Interactive Terminal */
+    .terminal-box {
+      background: rgba(3, 8, 20, 0.94);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+    .terminal-head {
+      background: rgba(56, 189, 248, 0.08);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Code Highlighting */
+    .c-kw { color: #f43f5e; font-weight: 600; }
+    .c-cls { color: #38bdf8; font-weight: 700; }
+    .c-fn { color: #a855f7; }
+    .c-str { color: #34d399; }
+    .c-cm { color: #64748b; font-style: italic; }
+    .c-val { color: #f8fafc; }
+
+    /* Skills Pill */
+    .skill-chip {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #e2e8f0;
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+    .skill-chip:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--cyan-glow);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Connect & Direct Link Cards */
+    .hub-link-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 16px 20px;
+      border-radius: 18px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .hub-link-card i {
+      font-size: 1.25rem;
+      color: var(--sky-glow);
+      transition: 0.25s;
+    }
+    .hub-link-card:hover {
+      background: var(--sky-glow);
+      color: #020611;
+      border-color: var(--sky-glow);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+    }
+    .hub-link-card:hover i {
+      color: #020611;
+      transform: scale(1.1);
+    }
+
+    /* Floating Chat Copilot */
+    .chat-anchor {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 10000;
+    }
+    .copilot-btn {
+      background: linear-gradient(135deg, #00f2fe 0%, #38bdf8 100%);
+      color: #020611;
+      border: none;
+      padding: 13px 24px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      transition: all 0.3s ease;
+    }
+    .copilot-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 40px rgba(0, 242, 254, 0.65);
+    }
+
+    .copilot-window {
+      display: none;
+      width: 375px;
+      height: 495px;
+      background: rgba(4, 12, 28, 0.96);
+      border: 1px solid var(--cyan-glow);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 24px;
+      position: absolute;
+      bottom: 68px;
+      right: 0;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 242, 254, 0.25);
+      animation: popIn 0.3s ease;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(15px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .copilot-header {
+      background: rgba(56, 189, 248, 0.12);
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .copilot-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+    .chat-msg {
+      padding: 10px 14px;
+      border-radius: 16px;
+      max-width: 88%;
+      line-height: 1.45;
+    }
+    .bot-msg {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #f1f5f9;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .user-msg {
+      background: var(--cyan-glow);
+      color: #020611;
+      font-weight: 600;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .copilot-footer {
+      padding: 12px 14px;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .copilot-footer input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #ffffff;
+      outline: none;
+      font-size: 0.88rem;
+    }
+    .copilot-footer input:focus {
+      border-color: var(--cyan-glow);
+    }
+    .copilot-footer button {
+      background: var(--cyan-glow);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: #020611;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    /* System Toast */
+    #hud-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(0, 242, 254, 0.95);
+      color: #020611;
+      padding: 12px 28px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      z-index: 99999;
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      opacity: 0;
+    }
+    #hud-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Control Pills */
+    .ctrl-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--cyan-glow);
+      padding: 8px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    .ctrl-pill:hover {
+      background: rgba(56, 189, 248, 0.18);
+    }
+
+    /* Pipeline Node */
+    .flow-node {
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .flow-node:hover {
+      border-color: var(--cyan-glow);
+      background: rgba(56, 189, 248, 0.12);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .master-frame {
+        padding: 24px 18px 45px;
+        border-radius: 24px;
+      }
+      header {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-capsule {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+      .copilot-window {
+        width: 92vw;
+        right: -10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- High-Tech 3D Neural AI Constellation Background Canvas -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- Interactive System Toast -->
+  <div id="hud-toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-msg">System Initialized</span>
+  </div>
+
+  <!-- MASTER VIEWPORT CONTAINER -->
+  <div class="master-frame">
+
+    <!-- TOP NAVIGATION -->
+    <header>
+      <div class="flex items-center gap-3">
+        <a href="#hero" class="font-heading text-2xl sm:text-3xl font-black text-white tracking-wider flex items-center gap-2">
+          <span>RAJAT</span><span class="text-sky-400">.RAI</span>
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-400/10 border border-sky-400/40 text-sky-300 font-code tracking-normal font-semibold">IIT JODHPUR</span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-capsule hidden lg:flex items-center gap-7 text-sm font-semibold text-gray-300">
+        <a href="#about" class="hover:text-sky-400 transition">About</a>
+        <a href="#skills" class="hover:text-sky-400 transition">Skills Matrix</a>
+        <a href="#systems" class="hover:text-sky-400 transition">Featured Systems <span class="text-xs text-sky-400 font-code">[4]</span></a>
+        <a href="#leadership" class="hover:text-sky-400 transition">Leadership</a>
+        <a href="#education" class="hover:text-sky-400 transition">Education</a>
+        <a href="#honors" class="hover:text-sky-400 transition">Honors</a>
+        <a href="#contact" class="hover:text-sky-400 transition">Contact</a>
+      </nav>
+
+      <!-- Right Utility Actions -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="cycle3DTheme()" class="ctrl-pill" id="themeSwitchBtn" title="Switch 3D Background Theme">
+          <i class="fa-solid fa-wand-magic-sparkles text-sky-400"></i> <span id="themeModeText">Theme: Neural AI</span>
+        </button>
+        <button onclick="toggleAudioFx()" class="ctrl-pill" id="soundFxBtn" title="Toggle HUD Sound Effects">
+          <i class="fa-solid fa-volume-high"></i> <span class="hidden sm:inline">SFX: ON</span>
+        </button>
+        <button onclick="copyIitEmail()" class="btn-glass text-xs sm:text-sm py-2 px-3.5">
+          <i class="fa-solid fa-copy text-sky-400"></i> Copy IIT Email
+        </button>
+        <a href="#contact" class="btn-hyper text-xs sm:text-sm py-2 px-5 hidden sm:inline-flex">
+          Let's Talk <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="text-center pt-6 pb-16">
+      
+      <!-- Academic & Role Live Badge -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-400/30 mb-8 backdrop-blur-md">
+        <span class="flex h-2.5 w-2.5 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+        </span>
+        <span class="text-xs sm:text-sm font-bold text-gray-200">
+          BS IN APPLIED AI & DATA SCIENCE @ <span class="text-sky-400">IIT JODHPUR</span>
+        </span>
+        <span class="text-gray-500 hidden sm:inline">•</span>
+        <span class="text-xs sm:text-sm font-code text-sky-300 hidden sm:inline">ROLL: B25BS3394</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight uppercase leading-none mb-6">
+        RAJAT <span class="text-glow text-sky-400">RAI</span>
+      </h1>
+
+      <!-- Dynamic Role Typing Subtitle -->
+      <div class="h-10 mb-6 flex items-center justify-center">
+        <span class="text-xl sm:text-2xl lg:text-3xl font-bold font-code text-gray-200">
+          Role: <span id="typing-role" class="text-sky-400 border-r-2 border-sky-400 pr-1">GenAI Architect</span>
+        </span>
+      </div>
+
+      <!-- Executive Philosophy -->
+      <div class="max-w-3xl mx-auto mb-10">
+        <p class="text-xl sm:text-2xl font-bold text-gradient italic mb-4">
+          "A Force. Driven by Deep Logic & Research."
+        </p>
+        <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+          Founder & Tech Lead at <strong class="text-white">Team GRIT</strong>. Designing autonomous generative AI pipelines, distributed web platforms, and automated high-throughput media engines. My engineering philosophy mirrors clean Python architecture: <span class="text-sky-400 font-code font-bold">precise, structured, and zero-chaos</span>.
+        </p>
+      </div>
+
+      <!-- Hero Call-To-Actions with Direct Live Links -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+        <a href="#systems" class="btn-hyper" onclick="playAudioClick()">
+          <i class="fa-solid fa-cube"></i> Explore Featured Systems
+        </a>
+        <a href="https://grit-work-os.streamlit.app/" target="_blank" class="btn-glass" onclick="playAudioClick()">
+          <i class="fa-solid fa-server text-sky-400"></i> Live GRIT Work OS
+        </a>
+        <a href="https://rajjuubhai16.github.io/ApexAutomobili/" target="_blank" class="btn-glass" onclick="playAudioClick()">
+          <i class="fa-solid fa-car-side text-purple-400"></i> Live Apex Automobili
+        </a>
+        <button onclick="togglePersonalCopilot(); playAudioClick();" class="btn-glass">
+          <i class="fa-solid fa-robot text-sky-400"></i> Ask Rajat AI Copilot
+        </button>
+      </div>
+
+      <!-- Quick Metrics Bento Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-sky-400/15">
+        <div class="bento-card p-4 text-center">
+          <div class="spotlight-overlay"></div>
+          <p class="text-2xl sm:text-3xl font-black text-sky-400 font-code">IITJ</p>
+          <p class="text-xs uppercase text-gray-400 mt-1 font-semibold tracking-wider">Applied AI & Data Science</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <div class="spotlight-overlay"></div>
+          <p class="text-2xl sm:text-3xl font-black text-sky-400 font-code">Team GRIT</p>
+          <p class="text-xs uppercase text-gray-400 mt-1 font-semibold tracking-wider">Founder & Tech Lead</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <div class="spotlight-overlay"></div>
+          <p class="text-2xl sm:text-3xl font-black text-sky-400 font-code">4+ Core</p>
+          <p class="text-xs uppercase text-gray-400 mt-1 font-semibold tracking-wider">Engineered Systems</p>
+        </div>
+        <div class="bento-card p-4 text-center">
+          <div class="spotlight-overlay"></div>
+          <p class="text-2xl sm:text-3xl font-black text-sky-400 font-code">ISRO & Google</p>
+          <p class="text-xs uppercase text-gray-400 mt-1 font-semibold tracking-wider">Hackathon & Ambassador</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: EXECUTIVE SUMMARY & ARCHITECTURAL MINDSET -->
+    <section id="about">
+      <div class="tag-badge"><i class="fa-solid fa-terminal"></i> Section 01 // Core Mindset</div>
+      <h2 class="section-title">EXECUTIVE SUMMARY & <span>PHILOSOPHY</span></h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Bio & Strengths (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bento-card p-6 sm:p-8">
+            <div class="spotlight-overlay"></div>
+            <h3 class="text-2xl font-bold text-sky-400 mb-4 flex items-center gap-3">
+              <i class="fa-solid fa-microchip"></i> Systemic Engineering Mindset
+            </h3>
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+              I am a <strong>GenAI Architect & Systems Engineer</strong> currently pursuing a Bachelor of Science (BS) in <em>Applied AI and Data Science</em> at the <strong>Indian Institute of Technology (IIT), Jodhpur</strong>. As the Founder and Technical Lead at <strong>Team GRIT</strong>, my mission centers on architecting autonomous pipelines, full-stack web platforms, and automated artificial intelligence workflows designed to scale reliably.
+            </p>
+            <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+              My cognitive process operates with the discipline of pristine Python code: <strong class="text-white">precise, structured, and zero-chaos</strong>. My core technical strength is reverse-engineering underlying system logic to transform intricate technical barriers into resilient, production-ready architectures.
+            </p>
+            <div class="pt-4 border-t border-sky-400/20 flex flex-wrap gap-2.5">
+              <span class="skill-chip"><i class="fa-solid fa-location-dot text-sky-400"></i> Bhadohi / Varanasi, UP, India</span>
+              <span class="skill-chip"><i class="fa-solid fa-envelope text-sky-400"></i> b25bs3394@iitj.ac.in</span>
+              <span class="skill-chip"><i class="fa-solid fa-chess-knight text-sky-400"></i> Chess Strategic Modeling</span>
+            </div>
+          </div>
+
+          <!-- Highlight Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bento-card p-5">
+              <div class="spotlight-overlay"></div>
+              <div class="text-sky-400 text-xl mb-2"><i class="fa-solid fa-brain"></i></div>
+              <h4 class="font-bold text-white text-base mb-1">Deep Logic & Research</h4>
+              <p class="text-gray-400 text-sm">Algorithmic approach to decompose complex distributed problems into modular pipelines.</p>
+            </div>
+            <div class="bento-card p-5">
+              <div class="spotlight-overlay"></div>
+              <div class="text-sky-400 text-xl mb-2"><i class="fa-solid fa-network-wired"></i></div>
+              <h4 class="font-bold text-white text-base mb-1">Autonomous Systems</h4>
+              <p class="text-gray-400 text-sm">Automating end-to-end workflows from multi-modal inputs to finalized media & dashboards.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Code Terminal (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="terminal-box">
+            <div class="terminal-head">
+              <div class="flex gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              </div>
+              <span class="text-xs text-gray-400 font-code font-medium">rajat_architecture.py</span>
+              <button onclick="runCodeSimulation()" class="text-xs bg-sky-400/20 hover:bg-sky-400/40 text-sky-300 px-2.5 py-1 rounded transition border border-sky-400/40">
+                <i class="fa-solid fa-play mr-1"></i> Run
+              </button>
+            </div>
+            <div class="p-5 text-xs sm:text-sm leading-relaxed overflow-x-auto text-gray-300">
+<pre><code><span class="c-cm"># Architecture Blueprint</span>
+<span class="c-kw">class</span> <span class="c-cls">RajatRai</span>(<span class="c-val">GenAIArchitect</span>):
+    <span class="c-kw">def</span> <span class="c-fn">__init__</span>(<span class="c-val">self</span>):
+        <span class="c-val">self</span>.institute = <span class="c-str">"IIT Jodhpur"</span>
+        <span class="c-val">self</span>.program = <span class="c-str">"BS Applied AI & DS"</span>
+        <span class="c-val">self</span>.roll_no = <span class="c-str">"B25BS3394"</span>
+        <span class="c-val">self</span>.role = <span class="c-str">"Founder & Tech Lead @ Team GRIT"</span>
+        <span class="c-val">self</span>.philosophy = <span class="c-str">"Precise, Structured, Zero-Chaos"</span>
+        <span class="c-val">self</span>.location = <span class="c-str">"Bhadohi / Varanasi, UP"</span>
+
+    <span class="c-kw">def</span> <span class="c-fn">engineer_solution</span>(<span class="c-val">self</span>, <span class="c-val">raw_problem</span>):
+        <span class="c-val">core_logic</span> = <span class="c-val">self</span>.<span class="c-fn">reverse_engineer</span>(<span class="c-val">raw_problem</span>)
+        <span class="c-val">pipeline</span> = <span class="c-val">self</span>.<span class="c-fn">build_autonomous_pipeline</span>(
+            <span class="c-val">core_logic</span>,
+            <span class="c-val">llm_engine</span>=<span class="c-str">"Gemini 2.5 Flash"</span>,
+            <span class="c-val">video_sync</span>=<span class="c-str">"MoviePy + FFmpeg"</span>
+        )
+        <span class="c-kw">return</span> <span class="c-val">pipeline</span>.<span class="c-fn">deploy</span>(<span class="c-val">production_ready</span>=<span class="c-kw">True</span>)
+</code></pre>
+            </div>
+            <div id="term-stdout" class="bg-black/60 p-4 border-t border-sky-400/20 text-xs font-code text-sky-300">
+              <span class="text-gray-500">// Output Console:</span>
+              <p class="mt-1 text-emerald-400">✓ System Initialized: RajatRai [IIT Jodhpur / Team GRIT]</p>
+              <p class="text-gray-400">✓ Engine: Ready to process autonomous pipelines.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: CORE TECHNICAL SKILLS MATRIX -->
+    <section id="skills">
+      <div class="tag-badge"><i class="fa-solid fa-layer-group"></i> Section 02 // Capabilities</div>
+      <h2 class="section-title">CORE TECHNICAL <span>SKILLS MATRIX</span></h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Skill 1: AI & Machine Learning -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">Specialization</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">AI & Machine Learning</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Designing LLM workflows, vision extraction pipelines, and edge computer vision modules.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">Google Gemini API (2.5 Flash)</span>
+            <span class="skill-chip">Prompt Engineering</span>
+            <span class="skill-chip">LLM Integration</span>
+            <span class="skill-chip">Computer Vision</span>
+            <span class="skill-chip">MediaPipe</span>
+            <span class="skill-chip">TensorFlow.js</span>
+          </div>
+        </div>
+
+        <!-- Skill 2: Programming Languages -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">Core Foundations</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Programming Languages</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Clean, modular, structured programming for rapid automation scripts and scalable web software.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">Python (Core, Automation, Scripting)</span>
+            <span class="skill-chip">JavaScript (ES6+)</span>
+            <span class="skill-chip">HTML5</span>
+            <span class="skill-chip">CSS3</span>
+            <span class="skill-chip">SQL</span>
+          </div>
+        </div>
+
+        <!-- Skill 3: Media & Video Automation -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-film"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">High Performance</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Media & Video Automation</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Automated high-speed rendering engines, neural audio synthesis, and headless video generation.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">MoviePy Engine</span>
+            <span class="skill-chip">gTTS (Voice Synthesis)</span>
+            <span class="skill-chip">NumPy Array Math</span>
+            <span class="skill-chip">FFmpeg Encoding</span>
+          </div>
+        </div>
+
+        <!-- Skill 4: Web & Frameworks -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">Production Apps</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Web & Frameworks</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Interactive telemetry dashboards, multi-department team management platforms, and modern UIs.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">Streamlit</span>
+            <span class="skill-chip">Streamlit Cloud Deployment</span>
+            <span class="skill-chip">Responsive Web Design</span>
+            <span class="skill-chip">RESTful API Integration</span>
+          </div>
+        </div>
+
+        <!-- Skill 5: Tools & Workflow -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">DevOps & AI Tools</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Tools & Workflow</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Cutting-edge AI-assisted developer environments, version control, and collaborative cloud notebooks.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">VS Code</span>
+            <span class="skill-chip">Cursor AI</span>
+            <span class="skill-chip">Git & GitHub</span>
+            <span class="skill-chip">Google Colab</span>
+          </div>
+        </div>
+
+        <!-- Skill 6: Logic & Strategy -->
+        <div class="bento-card p-7 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-2xl">
+                <i class="fa-solid fa-chess-knight"></i>
+              </div>
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">Analytical Edge</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Logic & Strategy</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Applying strategic chess mechanics, decision trees, and mathematical decomposition to software architecture.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-3 border-t border-sky-400/15">
+            <span class="skill-chip">Algorithmic Problem Solving</span>
+            <span class="skill-chip">Chess-based Strategic Modeling</span>
+            <span class="skill-chip">Reverse Engineering</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURED PRODUCTION SYSTEMS -->
+    <section id="systems">
+      <div class="tag-badge"><i class="fa-solid fa-rocket"></i> Section 03 // Production Systems</div>
+      <h2 class="section-title">FEATURED <span>SYSTEMS</span></h2>
+
+      <!-- SYSTEM 1: EduAniAI Pro (FLAGSHIP) -->
+      <div class="bento-card p-6 sm:p-10 mb-10 border-sky-400/50 shadow-2xl">
+        <div class="spotlight-overlay"></div>
+        <div class="flex flex-wrap justify-between items-start gap-4 mb-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-400/20 text-sky-300 border border-sky-400/40 text-xs font-bold mb-3">
+              <i class="fa-solid fa-crown text-yellow-400"></i> FLAGSHIP GENAI ARCHITECTURE
+            </div>
+            <h3 class="text-3xl sm:text-4xl font-black text-white">EduAniAI (EduAnim AI Pro)</h3>
+            <p class="text-sky-300 text-base sm:text-lg italic font-semibold mt-1">
+              "Turning Static Textbooks into Cinematic Educational Experiences."
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="toggleAppCopilot(); playAudioClick();" class="btn-hyper text-xs sm:text-sm py-2.5 px-5">
+              <i class="fa-solid fa-comments"></i> EduAniAI Assistant
+            </button>
+          </div>
+        </div>
+
+        <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-6">
+          <strong>Overview:</strong> An advanced text-to-video autonomous pipeline that automatically converts NCERT-based curriculum (Class 1 to 12) into interactive, animated video lessons. Engineered to bridge the digital learning divide by translating heavy theoretical concepts into engaging visual pedagogical media.
+        </p>
+
+        <!-- Pipeline Architecture Flow Diagram -->
+        <div class="mb-8 p-5 rounded-2xl bg-black/40 border border-sky-400/25">
+          <p class="text-xs uppercase tracking-wider text-sky-400 font-code font-bold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-diagram-project"></i> 5-Stage Automated Pipeline Architecture
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+            <div class="flow-node">
+              <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-camera"></i></div>
+              <h5 class="text-white text-xs font-bold uppercase">1. Input / Vision</h5>
+              <p class="text-gray-400 text-xs mt-1">Textbook page OCR & prompt content parsing</p>
+            </div>
+            <div class="flow-node">
+              <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-microchip"></i></div>
+              <h5 class="text-white text-xs font-bold uppercase">2. Gemini 2.5 Flash</h5>
+              <p class="text-gray-400 text-xs mt-1">Structured pedagogy script & scene generation</p>
+            </div>
+            <div class="flow-node">
+              <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-waveform-lines"></i></div>
+              <h5 class="text-white text-xs font-bold uppercase">3. gTTS Voice Sync</h5>
+              <p class="text-gray-400 text-xs mt-1">Synchronized speech synthesis with timestamps</p>
+            </div>
+            <div class="flow-node">
+              <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-film"></i></div>
+              <h5 class="text-white text-xs font-bold uppercase">4. MoviePy Engine</h5>
+              <p class="text-gray-400 text-xs mt-1">NumPy layer compositing & avatar keyframing</p>
+            </div>
+            <div class="flow-node">
+              <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-file-video"></i></div>
+              <h5 class="text-white text-xs font-bold uppercase">5. FFmpeg Output</h5>
+              <p class="text-gray-400 text-xs mt-1">Ultrafast H.264 video encoding (.mp4)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Core Interactive Modules -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+          <div class="bento-card p-5">
+            <div class="spotlight-overlay"></div>
+            <h4 class="font-bold text-sky-300 text-lg mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-book-bookmark"></i> Academic Module
+            </h4>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              NCERT Mapped for Class 1 to 12. Automated subject chapter summary generation, textbook question-answer breakdown, and core exam highlights.
+            </p>
+          </div>
+          <div class="bento-card p-5">
+            <div class="spotlight-overlay"></div>
+            <h4 class="font-bold text-sky-300 text-lg mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-user-astronaut"></i> Character Module
+            </h4>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Interactive 7-minute deep dive video simulations powered by custom avatars (e.g., Quantum Physicist avatar, AI Teacher avatar).
+            </p>
+          </div>
+          <div class="bento-card p-5">
+            <div class="spotlight-overlay"></div>
+            <h4 class="font-bold text-sky-300 text-lg mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-clapperboard"></i> Director's Module
+            </h4>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Empowers educators and students to supply custom prompts, pacing directives, and styling cues to generate bespoke educational films.
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Simulator Widget for EduAniAI -->
+        <div class="p-6 rounded-2xl bg-sky-950/20 border border-sky-400/30">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <h4 class="text-white font-bold text-base flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-sky-400"></i> Interactive Pipeline Simulator
+            </h4>
+            <span class="text-xs font-code text-sky-300">Live Client-Side Demonstration</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+            <div>
+              <label class="text-xs text-gray-400 font-code block mb-1">Target Subject & Class:</label>
+              <select id="simSubject" class="w-full bg-slate-900 border border-sky-400/30 rounded-xl p-2.5 text-xs text-white outline-none">
+                <option value="Physics - Quantum Mechanics (Class 12)">Physics - Quantum Mechanics (Class 12)</option>
+                <option value="Biology - DNA Replication (Class 11)">Biology - DNA Replication (Class 11)</option>
+                <option value="Chemistry - Periodic Trends (Class 10)">Chemistry - Periodic Trends (Class 10)</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs text-gray-400 font-code block mb-1">Avatar Character:</label>
+              <select id="simAvatar" class="w-full bg-slate-900 border border-sky-400/30 rounded-xl p-2.5 text-xs text-white outline-none">
+                <option value="Quantum Physicist Avatar">Quantum Physicist Avatar</option>
+                <option value="AI Teacher Avatar">AI Teacher Avatar</option>
+                <option value="Historical Researcher Avatar">Historical Researcher Avatar</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button onclick="runEduAniSimulation()" class="btn-hyper w-full text-xs py-2.5 justify-center">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Synthesize Video Lesson
+              </button>
+            </div>
+          </div>
+
+          <!-- Simulation Live Output -->
+          <div id="simLog" class="p-3 bg-black/70 rounded-xl font-code text-xs text-gray-300 border border-sky-400/20 min-h-[50px] flex items-center">
+            Click 'Synthesize Video Lesson' above to simulate the automated pipeline execution.
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="flex flex-wrap gap-2 mt-6 pt-4 border-t border-sky-400/20">
+          <span class="skill-chip"><i class="fa-brands fa-python text-yellow-400"></i> Python</span>
+          <span class="skill-chip"><i class="fa-solid fa-window-maximize text-red-400"></i> Streamlit</span>
+          <span class="skill-chip"><i class="fa-solid fa-sparkles text-sky-400"></i> Google Gemini API (2.5 Flash)</span>
+          <span class="skill-chip"><i class="fa-solid fa-video text-blue-400"></i> MoviePy</span>
+          <span class="skill-chip"><i class="fa-solid fa-microphone text-emerald-400"></i> gTTS</span>
+          <span class="skill-chip"><i class="fa-solid fa-calculator text-indigo-400"></i> NumPy</span>
+          <span class="skill-chip"><i class="fa-solid fa-bolt text-amber-400"></i> FFmpeg</span>
+        </div>
+      </div>
+
+      <!-- SYSTEMS 2, 3, 4 GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- SYSTEM 2: Apex Automobili (WITH DIRECT LIVE LINK) -->
+        <div class="bento-card p-7 flex flex-col justify-between border-purple-400/30">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-code text-purple-300 bg-purple-400/10 px-2.5 py-1 rounded-full border border-purple-400/20">Hypercar Showroom</span>
+              <i class="fa-solid fa-car-side text-purple-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-1">Apex Automobili</h3>
+            <p class="text-purple-300 text-xs italic font-semibold mb-4">"Engineering Beyond Physics"</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-5">
+              Futuristic hypercar showroom web application delivering immersive 3D motion layouts, telemetry glass specs dashboard (Horsepower, Battery Range, G-force stats), and custom color/interior configurator.
+            </p>
+
+            <!-- Telemetry Widget -->
+            <div class="p-4 rounded-xl bg-black/40 border border-purple-400/20 mb-5">
+              <p class="text-xs font-code font-bold text-purple-400 uppercase mb-2">Live Hypercar Telemetry:</p>
+              <div class="grid grid-cols-2 gap-2 text-xs font-code">
+                <div class="bg-slate-900/80 p-2 rounded border border-white/5">
+                  <span class="text-gray-400">Power:</span> <strong class="text-white">1,850 HP</strong>
+                </div>
+                <div class="bg-slate-900/80 p-2 rounded border border-white/5">
+                  <span class="text-gray-400">0-100:</span> <strong class="text-white">1.8s</strong>
+                </div>
+                <div class="bg-slate-900/80 p-2 rounded border border-white/5">
+                  <span class="text-gray-400">Top Speed:</span> <strong class="text-white">420 km/h</strong>
+                </div>
+                <div class="bg-slate-900/80 p-2 rounded border border-white/5">
+                  <span class="text-gray-400">Active Finish:</span> <strong class="text-purple-300" id="carFinish">Cyber Cyan</strong>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-3 pt-2 border-t border-white/10">
+                <span class="text-xs text-gray-400">Config:</span>
+                <button onclick="setCarFinish('Cyber Cyan', '#00f2fe')" class="w-5 h-5 rounded-full bg-cyan-400 border border-white" title="Cyan"></button>
+                <button onclick="setCarFinish('Crimson Pulse', '#ef4444')" class="w-5 h-5 rounded-full bg-red-500 border border-white" title="Red"></button>
+                <button onclick="setCarFinish('Gold Titanium', '#eab308')" class="w-5 h-5 rounded-full bg-yellow-500 border border-white" title="Gold"></button>
+                <button onclick="setCarFinish('Stealth Obsidian', '#1e293b')" class="w-5 h-5 rounded-full bg-slate-800 border border-white" title="Black"></button>
+              </div>
+            </div>
+
+            <!-- Direct Launch Button -->
+            <a href="https://rajjuubhai16.github.io/ApexAutomobili/" target="_blank" class="hub-link-card mb-4">
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span>Launch Apex Automobili App</span>
+              </span>
+              <span class="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-code">Live Demo</span>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-purple-400/15">
+            <span class="skill-chip">HTML5</span>
+            <span class="skill-chip">Modern CSS3</span>
+            <span class="skill-chip">JavaScript</span>
+            <span class="skill-chip">UI/UX Architecture</span>
+          </div>
+        </div>
+
+        <!-- SYSTEM 3: GRIT Work OS (WITH DIRECT LIVE LINK) -->
+        <div class="bento-card p-7 flex flex-col justify-between border-sky-400/30">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 px-2.5 py-1 rounded-full border border-sky-400/20">Enterprise Productivity</span>
+              <i class="fa-solid fa-users-gear text-sky-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-1">GRIT Work OS</h3>
+            <p class="text-sky-300 text-xs italic font-semibold mb-4">"Operational Command for Modern Teams"</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-5">
+              Centralized productivity platform engineered to handle multi-department task orchestration, team milestones, operational tracking, and automated KPI monitoring.
+            </p>
+
+            <!-- Department Matrix Overview -->
+            <div class="p-4 rounded-xl bg-black/40 border border-sky-400/20 mb-5">
+              <p class="text-xs font-code font-bold text-sky-400 uppercase mb-2">Connected Operations:</p>
+              <div class="flex flex-wrap gap-1.5 text-xs font-code">
+                <span class="bg-sky-500/15 text-sky-300 px-2 py-1 rounded">Frontend</span>
+                <span class="bg-sky-500/15 text-sky-300 px-2 py-1 rounded">Backend</span>
+                <span class="bg-sky-500/15 text-sky-300 px-2 py-1 rounded">Data Analytics</span>
+                <span class="bg-sky-500/15 text-sky-300 px-2 py-1 rounded">3D / UI</span>
+                <span class="bg-sky-500/15 text-sky-300 px-2 py-1 rounded">Marketing</span>
+              </div>
+              <div class="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+                <span>Deployment:</span>
+                <span class="text-emerald-400 font-bold font-code">● STREAMLIT CLOUD</span>
+              </div>
+            </div>
+
+            <!-- Direct Launch Button -->
+            <a href="https://grit-work-os.streamlit.app/" target="_blank" class="hub-link-card mb-4">
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <span>Launch GRIT Work OS</span>
+              </span>
+              <span class="text-xs bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded font-code">Live App</span>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-sky-400/15">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">Streamlit</span>
+            <span class="skill-chip">Git / GitHub</span>
+            <span class="skill-chip">Streamlit Cloud</span>
+          </div>
+        </div>
+
+        <!-- SYSTEM 4: GhostPose / PoseMatch -->
+        <div class="bento-card p-7 flex flex-col justify-between border-emerald-400/30">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-code text-emerald-300 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/20">Computer Vision</span>
+              <i class="fa-solid fa-person-running text-emerald-400 text-xl"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-1">GhostPose / PoseMatch</h3>
+            <p class="text-emerald-300 text-xs italic font-semibold mb-4">"Real-Time Movement Alignment"</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-5">
+              Real-time pose estimation camera web application powered by MediaPipe and TensorFlow.js delivering skeletal body tracking and movement alignment precision.
+            </p>
+
+            <!-- Interactive Pose Simulation Graphic -->
+            <div class="p-4 rounded-xl bg-black/40 border border-emerald-400/20 mb-5 text-center">
+              <canvas id="poseCanvas" width="220" height="100" class="mx-auto rounded bg-slate-950"></canvas>
+              <button onclick="animatePoseCanvas()" class="text-xs text-emerald-400 hover:text-white mt-2 font-code underline">
+                <i class="fa-solid fa-arrows-rotate mr-1"></i> Animate Skeletal Frame
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2 pt-4 border-t border-emerald-400/15">
+            <span class="skill-chip">MediaPipe</span>
+            <span class="skill-chip">TensorFlow.js</span>
+            <span class="skill-chip">JavaScript</span>
+            <span class="skill-chip">Computer Vision</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: LEADERSHIP & WORK EXPERIENCE -->
+    <section id="leadership">
+      <div class="tag-badge"><i class="fa-solid fa-briefcase"></i> Section 04 // Leadership & Track Record</div>
+      <h2 class="section-title">LEADERSHIP & <span>WORK EXPERIENCE</span></h2>
+
+      <div class="space-y-6">
+
+        <!-- Role 1: Founder & Tech Lead (Team GRIT) -->
+        <div class="bento-card p-6 sm:p-8">
+          <div class="spotlight-overlay"></div>
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div>
+              <span class="text-xs font-code text-sky-400 font-bold uppercase tracking-wider">Founder & Tech Lead (AI Engineer)</span>
+              <h3 class="text-2xl font-bold text-white mt-0.5">Team GRIT</h3>
+            </div>
+            <span class="text-xs sm:text-sm font-code text-sky-300 bg-sky-400/10 border border-sky-400/30 px-3.5 py-1.5 rounded-full">
+              July 2026 – Present
+            </span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed list-disc list-inside">
+            <li>
+              Lead and guide multi-functional teams spanning Frontend, Backend, Data Analytics, 3D/UI, and Technical Marketing.
+            </li>
+            <li>
+              Architected and deployed <strong>'GRIT Team Growth & Work OS'</strong> on cloud infrastructure, establishing centralized operational tracking.
+            </li>
+            <li>
+              Formulate architectural blueprints for autonomous AI workflows and full-stack web platforms to automate enterprise workflows.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Role 2: Internshala Student Partner (ISP) -->
+        <div class="bento-card p-6 sm:p-8">
+          <div class="spotlight-overlay"></div>
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div>
+              <span class="text-xs font-code text-sky-400 font-bold uppercase tracking-wider">Student Leadership & Mentorship</span>
+              <h3 class="text-2xl font-bold text-white mt-0.5">Internshala Student Partner (ISP)</h3>
+            </div>
+            <span class="text-xs sm:text-sm font-code text-sky-300 bg-sky-400/10 border border-sky-400/30 px-3.5 py-1.5 rounded-full">
+              Aug 2026 – Present
+            </span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed list-disc list-inside">
+            <li>
+              Mentor students and developer peers on coding upskilling roadmaps, technical interview preparation, and internship discovery.
+            </li>
+            <li>
+              Drive developer community awareness and execute student outreach initiatives for modern AI and software engineering stacks.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Role 3: Industrial Operations & Data Consultant -->
+        <div class="bento-card p-6 sm:p-8">
+          <div class="spotlight-overlay"></div>
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div>
+              <span class="text-xs font-code text-sky-400 font-bold uppercase tracking-wider">Supply Chain & Compliance Analytics</span>
+              <h3 class="text-2xl font-bold text-white mt-0.5">Industrial Operations & Data Consultant</h3>
+            </div>
+            <span class="text-xs sm:text-sm font-code text-sky-300 bg-sky-400/10 border border-sky-400/30 px-3.5 py-1.5 rounded-full">
+              June 2026
+            </span>
+          </div>
+          <ul class="space-y-3 text-gray-300 text-sm sm:text-base leading-relaxed list-disc list-inside">
+            <li>
+              Constructed Dadri DBK drawback tracking models and compliance analytics pipelines for the <strong>Bhadohi Handmade Carpet Cluster</strong>.
+            </li>
+            <li>
+              Streamlined international export documentation and logistics data flows for <strong>Archana Export House</strong>, eliminating processing bottlenecks.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: EDUCATION -->
+    <section id="education">
+      <div class="tag-badge"><i class="fa-solid fa-graduation-cap"></i> Section 05 // Academic Foundations</div>
+      <h2 class="section-title">ACADEMIC <span>EDUCATION</span></h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Degree 1: IIT Jodhpur -->
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between border-sky-400/40">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 border border-sky-400/30 px-3 py-1 rounded-full">
+                Undergraduate Degree
+              </span>
+              <i class="fa-solid fa-building-columns text-sky-400 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-1">Bachelor of Science (BS) in Applied AI & Data Science</h3>
+            <p class="text-sky-400 font-bold text-lg mb-2">Indian Institute of Technology (IIT), Jodhpur</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              Prestigious curriculum covering Deep Learning, Autonomous Agents, Probability & Statistics, Advanced Data Modeling, and Large Scale AI Pipelines.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-sky-400/20 flex flex-wrap items-center justify-between text-xs font-code text-gray-300">
+            <span>Duration: <strong class="text-white">2026 – Present</strong></span>
+            <span class="bg-sky-400/20 text-sky-300 px-2.5 py-1 rounded border border-sky-400/30">Roll No: B25BS3394</span>
+          </div>
+        </div>
+
+        <!-- Degree 2: Senior Secondary CBSE -->
+        <div class="bento-card p-7 sm:p-8 flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-code text-sky-300 bg-sky-400/10 border border-sky-400/30 px-3 py-1 rounded-full">
+                Senior Secondary (Class XII)
+              </span>
+              <i class="fa-solid fa-award text-sky-400 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-black text-white mb-1">PCM Stream (Physics, Chemistry, Mathematics)</h3>
+            <p class="text-sky-400 font-bold text-lg mb-2">Central Board of Secondary Education (CBSE)</p>
+            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+              Rigorous high school education with strong emphasis on mathematical logic, analytical physics, and algorithmic reasoning.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-sky-400/20 flex flex-wrap items-center justify-between text-xs font-code text-gray-300">
+            <span>Completed: <strong class="text-white">2025</strong></span>
+            <span class="text-emerald-400 font-semibold">STEM Distinction</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: HONORS & CREDENTIALS -->
+    <section id="honors">
+      <div class="tag-badge"><i class="fa-solid fa-trophy"></i> Section 06 // Recognitions</div>
+      <h2 class="section-title">HONORS & <span>CREDENTIALS</span></h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Honor 1: ISRO Hackathon -->
+        <div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="text-sky-400 text-3xl mb-4"><i class="fa-solid fa-satellite"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">ISRO Bharatiya Antariksh Hackathon</h4>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Official certificate of participation recognized for space technology innovation proposal submission.
+            </p>
+          </div>
+          <p class="text-sky-400 text-xs font-code mt-4 pt-3 border-t border-white/10">ISRO (2026)</p>
+        </div>
+
+        <!-- Honor 2: Top Lyria Artist & Google Ambassador -->
+        <div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="text-sky-400 text-3xl mb-4"><i class="fa-brands fa-google"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Top Lyria Artist & Google Ambassador</h4>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Awarded for creative audio prompting and technical synthesis utilizing Google Lyria generative audio engines.
+            </p>
+          </div>
+          <p class="text-sky-400 text-xs font-code mt-4 pt-3 border-t border-white/10">Google Ambassador (June 2026)</p>
+        </div>
+
+        <!-- Honor 3: JEE Advanced 2025 -->
+        <div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="text-yellow-400 text-3xl mb-4"><i class="fa-solid fa-medal"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">JEE Advanced 2025 Qualified</h4>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Successfully qualified the premier Joint Entrance Examination (Advanced) ranking among the top national STEM talent.
+            </p>
+          </div>
+          <p class="text-sky-400 text-xs font-code mt-4 pt-3 border-t border-white/10">JEE Advanced (2025)</p>
+        </div>
+
+        <!-- Honor 4: Google Ambassador (Game & Music) -->
+        <div class="bento-card p-6 rounded-2xl flex flex-col justify-between">
+          <div class="spotlight-overlay"></div>
+          <div>
+            <div class="text-purple-400 text-3xl mb-4"><i class="fa-solid fa-gamepad"></i></div>
+            <h4 class="font-bold text-white text-lg mb-2">Google Ambassador (Game & Music)</h4>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+              Recognized for high-enthusiasm participation, creative prompts, and developer community sprint engagement.
+            </p>
+          </div>
+          <p class="text-sky-400 text-xs font-code mt-4 pt-3 border-t border-white/10">Google Ambassador (May 2026)</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 7: CONTACT & COMMAND CENTER -->
+    <section id="contact">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left: Pitch (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="tag-badge"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
+          <h2 class="text-4xl sm:text-5xl font-black uppercase leading-tight">
+            CONNECT WITH <span class="text-glow text-sky-400 block">RAJAT RAI</span>
+          </h2>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Open for GenAI Engineering roles, Autonomous AI Pipeline collaborations, Team GRIT consultations, and technical architectural advisory.
+          </p>
+          <div class="p-4 rounded-xl bg-sky-950/20 border border-sky-400/25 text-xs font-code text-sky-300">
+            <p>📍 Location: Bhadohi / Varanasi, Uttar Pradesh, India</p>
+            <p class="mt-1">🎓 Student Identity: B25BS3394 @ IIT Jodhpur</p>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Link Hub & Channels (7 cols) -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            
+            <!-- Email 1 (IIT) -->
+            <a href="mailto:b25bs3394@iitj.ac.in" class="hub-link-card sm:col-span-2">
+              <span class="flex items-center gap-3">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>b25bs3394@iitj.ac.in <span class="text-xs text-sky-300 font-code block">Primary Official IIT Jodhpur Email</span></span>
+              </span>
+              <span class="text-xs bg-black/40 px-2 py-1 rounded font-code">Send Mail</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/codewithrajat" target="_blank" class="hub-link-card">
+              <span class="flex items-center gap-3">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn <span class="text-xs text-gray-400 block">@codewithrajat</span></span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/rajjuubhai16" target="_blank" class="hub-link-card">
+              <span class="flex items-center gap-3">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub <span class="text-xs text-gray-400 block">@rajjuubhai16</span></span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+            <!-- Handle 1: @_codewithrajat -->
+            <a href="https://instagram.com/_codewithrajat" target="_blank" class="hub-link-card">
+              <span class="flex items-center gap-3">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Channel <span class="text-xs text-gray-400 block">@_codewithrajat</span></span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+            <!-- Handle 2: @_rajjuubhai16 -->
+            <a href="https://instagram.com/_rajjuubhai16" target="_blank" class="hub-link-card">
+              <span class="flex items-center gap-3">
+                <i class="fa-solid fa-at"></i>
+                <span>Handle <span class="text-xs text-gray-400 block">@_rajjuubhai16</span></span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+            <!-- YouTube Channel: @jee_with_rajat -->
+            <a href="https://youtube.com/@jee_with_rajat" target="_blank" class="hub-link-card sm:col-span-2">
+              <span class="flex items-center gap-3">
+                <i class="fa-brands fa-youtube text-rose-500"></i>
+                <span>YouTube Channel: @jee_with_rajat <span class="text-xs text-gray-400 block">JEE & Developer Roadmaps Mentorship</span></span>
+              </span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="mt-16 pt-8 border-t border-sky-400/15 flex flex-wrap justify-between items-center gap-4 text-xs font-code text-gray-400">
+        <p>© 2026 Rajat Rai — GenAI Architect & Tech Lead (Team GRIT). All rights reserved.</p>
+        <p class="text-sky-400">IIT Jodhpur • BS in Applied AI & Data Science</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FLOATING CHATBOT 1: RAJAT AI COPILOT -->
+  <div class="chat-anchor">
+    <button class="copilot-btn" onclick="togglePersonalCopilot(); playAudioClick();">
+      <i class="fa-solid fa-robot"></i> <span>Ask Rajat AI</span>
+    </button>
+
+    <div class="copilot-window" id="personal-copilot-window">
+      <div class="copilot-header">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <h4 class="font-bold text-white text-sm">Rajat Rai AI Copilot</h4>
+        </div>
+        <button onclick="togglePersonalCopilot(); playAudioClick();" class="text-sky-400 hover:text-white font-bold text-lg">✕</button>
+      </div>
+      <div class="copilot-body" id="personalChatBody">
+        <div class="chat-msg bot-msg">
+          Hello! I am <strong>Rajat AI Copilot</strong>. Ask me about Rajat's degree at IIT Jodhpur (Roll: B25BS3394), Team GRIT, EduAniAI architecture, live projects, or contact information!
+        </div>
+      </div>
+      <div class="copilot-footer">
+        <input type="text" id="personalChatInput" placeholder="Ask e.g. EduAniAI, IITJ, Skills..." onkeypress="if(event.key==='Enter') sendPersonalChat();">
+        <button onclick="sendPersonalChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CHATBOT 2: EDUANIAI APP KNOWLEDGE BOT -->
+  <div class="chat-anchor" style="right: auto; left: 24px;">
+    <div class="copilot-window" id="app-copilot-window" style="right: auto; left: 0;">
+      <div class="copilot-header">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+          <h4 class="font-bold text-white text-sm">EduAniAI Architecture Bot</h4>
+        </div>
+        <button onclick="toggleAppCopilot(); playAudioClick();" class="text-sky-400 hover:text-white font-bold text-lg">✕</button>
+      </div>
+      <div class="copilot-body" id="appChatBody">
+        <div class="chat-msg bot-msg">
+          Welcome! I am the <strong>EduAniAI Pro Architecture Assistant</strong>. Ask me about the 5-stage automated pipeline, Google Gemini 2.5 Flash scripting, MoviePy & FFmpeg video sync, or curriculum modules.
+        </div>
+      </div>
+      <div class="copilot-footer">
+        <input type="text" id="appChatInput" placeholder="Ask e.g. How does pipeline work?..." onkeypress="if(event.key==='Enter') sendAppChat();">
+        <button onclick="sendAppChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEAST-LEVEL THREE.JS ENGINE & INTERACTIVITY -->
+  <script>
+    // Spotlight Effect on Bento Cards
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // Audio Synthesizer for High-Tech HUD SFX
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    function playAudioClick(freq = 620, duration = 0.05) {
+      if (!audioEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleAudioFx() {
+      audioEnabled = !audioEnabled;
+      const btn = document.getElementById('soundFxBtn');
+      if (audioEnabled) {
+        btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span class="hidden sm:inline">SFX: ON</span>';
+        playAudioClick(880, 0.08);
+      } else {
+        btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span class="hidden sm:inline">SFX: OFF</span>';
+      }
+    }
+
+    // System Toast Utility
+    function showToast(message) {
+      const toast = document.getElementById('hud-toast');
+      const text = document.getElementById('toast-msg');
+      text.innerText = message;
+      toast.classList.add('active');
+      playAudioClick(750, 0.06);
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 3000);
+    }
+
+    function copyIitEmail() {
+      navigator.clipboard.writeText("b25bs3394@iitj.ac.in").then(() => {
+        showToast("Copied to clipboard: b25bs3394@iitj.ac.in");
+      }).catch(() => {
+        showToast("Email: b25bs3394@iitj.ac.in");
+      });
+    }
+
+    // Dynamic Typewriter Effect for Hero
+    const roles = [
+      "GenAI Architect & Developer",
+      "Founder & Tech Lead @ Team GRIT",
+      "BS Applied AI @ IIT Jodhpur",
+      "Autonomous Pipeline Specialist"
+    ];
+    let roleIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById('typing-role');
+
+    function typeRole() {
+      const currentRole = roles[roleIdx];
+      if (isDeleting) {
+        typingElement.textContent = currentRole.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        typingElement.textContent = currentRole.substring(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let speed = isDeleting ? 35 : 75;
+
+      if (!isDeleting && charIdx === currentRole.length) {
+        speed = 2200;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        speed = 400;
+      }
+
+      setTimeout(typeRole, speed);
+    }
+    typeRole();
+
+    // THREE.JS HIGH-TECH MULTI-THEME 3D CANVAS ENGINE
+    const canvas = document.getElementById('three-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    scene.fog = new THREE.FogExp2(0x030712, 0.016);
+
+    const themeGroups = {
+      neural: new THREE.Group(),
+      nebula: new THREE.Group(),
+      cybergrid: new THREE.Group()
+    };
+    scene.add(themeGroups.neural);
+    scene.add(themeGroups.nebula);
+    scene.add(themeGroups.cybergrid);
+
+    // THEME 1: NEURAL AI SYNAPSES & CONSTELLATION GRAPH
+    const nodeCount = 140;
+    const nodePositions = new Float32Array(nodeCount * 3);
+    const nodeVelocities = [];
+    const maxLinkDist = 9.8;
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodePositions[i * 3] = (Math.random() - 0.5) * 55;
+      nodePositions[i * 3 + 1] = (Math.random() - 0.5) * 45;
+      nodePositions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+
+      nodeVelocities.push({
+        x: (Math.random() - 0.5) * 0.035,
+        y: (Math.random() - 0.5) * 0.035,
+        z: (Math.random() - 0.5) * 0.03
+      });
+    }
+
+    const nodeGeo = new THREE.BufferGeometry();
+    nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePositions, 3));
+
+    const nodeMat = new THREE.PointsMaterial({
+      color: 0x00f2fe,
+      size: 0.55,
+      transparent: true,
+      opacity: 0.85
+    });
+
+    const neuralPoints = new THREE.Points(nodeGeo, nodeMat);
+    themeGroups.neural.add(neuralPoints);
+
+    const maxLines = (nodeCount * (nodeCount - 1)) / 2;
+    const linePositions = new Float32Array(maxLines * 6);
+    const lineColors = new Float32Array(maxLines * 6);
+
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    lineGeo.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
+
+    const lineMat = new THREE.LineBasicMaterial({
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.45,
+      blending: THREE.AdditiveBlending
+    });
+
+    const neuralSegments = new THREE.LineSegments(lineGeo, lineMat);
+    themeGroups.neural.add(neuralSegments);
+
+    // Floating ambient orbs
+    const orbCount = 200;
+    const orbGeo = new THREE.BufferGeometry();
+    const orbPos = new Float32Array(orbCount * 3);
+    for (let i = 0; i < orbCount * 3; i += 3) {
+      orbPos[i] = (Math.random() - 0.5) * 80;
+      orbPos[i + 1] = (Math.random() - 0.5) * 60;
+      orbPos[i + 2] = (Math.random() - 0.5) * 80;
+    }
+    orbGeo.setAttribute('position', new THREE.BufferAttribute(orbPos, 3));
+    const orbMat = new THREE.PointsMaterial({
+      color: 0x38bdf8,
+      size: 0.28,
+      transparent: true,
+      opacity: 0.45
+    });
+    const ambientOrbs = new THREE.Points(orbGeo, orbMat);
+    themeGroups.neural.add(ambientOrbs);
+
+    // THEME 2: COSMIC QUANTUM NEBULA & STARFIELD
+    const starCount = 950;
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount * 3; i += 3) {
+      starPos[i] = (Math.random() - 0.5) * 90;
+      starPos[i + 1] = (Math.random() - 0.5) * 70;
+      starPos[i + 2] = (Math.random() - 0.5) * 90;
+    }
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    const starMat = new THREE.PointsMaterial({
+      color: 0xc084fc,
+      size: 0.35,
+      transparent: true,
+      opacity: 0.85
+    });
+    const starCluster = new THREE.Points(starGeo, starMat);
+    themeGroups.nebula.add(starCluster);
+
+    // THEME 3: CYBER HORIZON GRID WAVES
+    const gridGeo = new THREE.PlaneGeometry(80, 80, 36, 36);
+    const gridMat = new THREE.MeshBasicMaterial({
+      color: 0x00f2fe,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.25
+    });
+    const gridMesh = new THREE.Mesh(gridGeo, gridMat);
+    gridMesh.rotation.x = -Math.PI / 2.3;
+    gridMesh.position.y = -12;
+    themeGroups.cybergrid.add(gridMesh);
+
+    // Ambient & Point Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    scene.add(ambientLight);
+
+    const cyanLight = new THREE.PointLight(0x00f2fe, 3, 55);
+    cyanLight.position.set(0, 6, 6);
+    scene.add(cyanLight);
+
+    const purpleLight = new THREE.PointLight(0xa855f7, 2.5, 45);
+    purpleLight.position.set(0, -6, -6);
+    scene.add(purpleLight);
+
+    camera.position.z = 24;
+    camera.position.y = 2;
+
+    // Background Themes Controller
+    const themesList = [
+      { id: 'neural', label: 'Theme: Neural AI', desc: 'Neural AI Synapses & Nodes' },
+      { id: 'nebula', label: 'Theme: Cosmic Nebula', desc: 'Deep Space Starfield' },
+      { id: 'cybergrid', label: 'Theme: Cyber Grid', desc: 'Synthwave Matrix Grid' },
+      { id: 'darkvoid', label: 'Theme: Minimal Dark', desc: 'Clean Obsidian Focus' }
+    ];
+    let currentThemeIdx = 0;
+
+    function apply3DTheme(themeId) {
+      themeGroups.neural.visible = (themeId === 'neural');
+      themeGroups.nebula.visible = (themeId === 'nebula');
+      themeGroups.cybergrid.visible = (themeId === 'cybergrid');
+
+      if (themeId === 'darkvoid') {
+        document.body.style.background = '#02050b';
+      } else if (themeId === 'neural') {
+        document.body.style.background = 'radial-gradient(ellipse at 50% -10%, #0c2146 0%, #061329 35%, #030712 75%, #02040a 100%)';
+      } else if (themeId === 'nebula') {
+        document.body.style.background = 'radial-gradient(ellipse at 50% 10%, #201138 0%, #0d061c 45%, #030108 100%)';
+      } else if (themeId === 'cybergrid') {
+        document.body.style.background = 'radial-gradient(ellipse at 50% 0%, #002233 0%, #01121d 45%, #01080e 100%)';
+      }
+    }
+    apply3DTheme('neural');
+
+    function cycle3DTheme() {
+      currentThemeIdx = (currentThemeIdx + 1) % themesList.length;
+      const selected = themesList[currentThemeIdx];
+      apply3DTheme(selected.id);
+      document.getElementById('themeModeText').innerText = selected.label;
+      playAudioClick(920, 0.08);
+      showToast(`Background Switched: ${selected.desc}`);
+    }
+
+    // Mouse Tracking Parallax
+    let targetMouseX = 0;
+    let targetMouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    // 3D Render Loop
+    let clock = new THREE.Clock();
+
+    function render3D() {
+      requestAnimationFrame(render3D);
+      const elapsedTime = clock.getElapsedTime();
+
+      camera.position.x += (targetMouseX * 1.5 - camera.position.x) * 0.025;
+      camera.position.y += (2 - targetMouseY * 1.2 - camera.position.y) * 0.025;
+
+      if (themeGroups.neural.visible) {
+        themeGroups.neural.rotation.y = elapsedTime * 0.035;
+        themeGroups.neural.rotation.x = Math.sin(elapsedTime * 0.02) * 0.08;
+
+        const posAttr = nodeGeo.attributes.position;
+        const positions = posAttr.array;
+        let lineIdx = 0;
+        let colorIdx = 0;
+
+        for (let i = 0; i < nodeCount; i++) {
+          positions[i * 3] += nodeVelocities[i].x;
+          positions[i * 3 + 1] += nodeVelocities[i].y;
+          positions[i * 3 + 2] += nodeVelocities[i].z;
+
+          if (Math.abs(positions[i * 3]) > 27) nodeVelocities[i].x *= -1;
+          if (Math.abs(positions[i * 3 + 1]) > 22) nodeVelocities[i].y *= -1;
+          if (Math.abs(positions[i * 3 + 2]) > 20) nodeVelocities[i].z *= -1;
+        }
+        posAttr.needsUpdate = true;
+
+        for (let i = 0; i < nodeCount; i++) {
+          for (let j = i + 1; j < nodeCount; j++) {
+            const dx = positions[i * 3] - positions[j * 3];
+            const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+            const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+            if (dist < maxLinkDist) {
+              const alpha = 1.0 - (dist / maxLinkDist);
+
+              linePositions[lineIdx++] = positions[i * 3];
+              linePositions[lineIdx++] = positions[i * 3 + 1];
+              linePositions[lineIdx++] = positions[i * 3 + 2];
+
+              linePositions[lineIdx++] = positions[j * 3];
+              linePositions[lineIdx++] = positions[j * 3 + 1];
+              linePositions[lineIdx++] = positions[j * 3 + 2];
+
+              lineColors[colorIdx++] = 0.0;
+              lineColors[colorIdx++] = 0.95 * alpha;
+              lineColors[colorIdx++] = 1.0 * alpha;
+
+              lineColors[colorIdx++] = 0.22 * alpha;
+              lineColors[colorIdx++] = 0.74 * alpha;
+              lineColors[colorIdx++] = 0.97 * alpha;
+            }
+          }
+        }
+
+        lineGeo.setDrawRange(0, lineIdx / 3);
+        lineGeo.attributes.position.needsUpdate = true;
+        lineGeo.attributes.color.needsUpdate = true;
+      }
+
+      if (themeGroups.nebula.visible) {
+        themeGroups.nebula.rotation.y += 0.001;
+        themeGroups.nebula.rotation.z += 0.0005;
+        const sPos = starGeo.attributes.position.array;
+        for (let i = 2; i < starCount * 3; i += 3) {
+          sPos[i] += 0.08;
+          if (sPos[i] > 30) sPos[i] = -60;
+        }
+        starGeo.attributes.position.needsUpdate = true;
+      }
+
+      if (themeGroups.cybergrid.visible) {
+        const gridPos = gridGeo.attributes.position;
+        for (let i = 0; i < gridPos.count; i++) {
+          const u = gridPos.getX(i);
+          const v = gridPos.getY(i);
+          const z = Math.sin(u * 0.2 + elapsedTime * 1.5) * Math.cos(v * 0.2 + elapsedTime * 1.2) * 1.6;
+          gridPos.setZ(i, z);
+        }
+        gridPos.needsUpdate = true;
+      }
+
+      renderer.render(scene, camera);
+    }
+    render3D();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Code Simulation
+    function runCodeSimulation() {
+      playAudioClick(900, 0.1);
+      const out = document.getElementById('term-stdout');
+      out.innerHTML = `
+        <span class="text-gray-500">// Executing rajat_architecture.py:</span>
+        <p class="text-sky-300 mt-1">⚙️ [1/3] Parsing Problem Matrix into Modular Logic...</p>
+        <p class="text-sky-300">⚙️ [2/3] Calling Google Gemini 2.5 Flash API for Pedagogy Scripts...</p>
+        <p class="text-emerald-400 font-bold">✓ [3/3] Autonomous Pipeline Deployed: Zero-Chaos Execution Guaranteed!</p>
+      `;
+      showToast("Code Simulation Executed Successfully!");
+    }
+
+    // EduAniAI Pipeline Simulator
+    function runEduAniSimulation() {
+      playAudioClick(850, 0.08);
+      const sub = document.getElementById('simSubject').value;
+      const avatar = document.getElementById('simAvatar').value;
+      const log = document.getElementById('simLog');
+
+      log.innerHTML = `<span class="text-sky-300 font-bold animate-pulse">⚙️ Initializing Pipeline for "${sub}" with ${avatar}...</span>`;
+      
+      setTimeout(() => {
+        log.innerHTML = `<span class="text-sky-400">🤖 Step 1/3: Gemini 2.5 Flash synthesized 14 pedagogical scenes with structured dialogue...</span>`;
+      }, 700);
+
+      setTimeout(() => {
+        log.innerHTML = `<span class="text-indigo-300">🎙️ Step 2/3: gTTS rendered synchronized voice-over audio with millisecond markers...</span>`;
+      }, 1400);
+
+      setTimeout(() => {
+        log.innerHTML = `<span class="text-emerald-400 font-bold">✓ Step 3/3: MoviePy & FFmpeg compiled "lesson_output.mp4" (1080p, 60fps) in 2.4s! Ready for student stream.</span>`;
+        showToast("EduAniAI Video Lesson Synthesized!");
+      }, 2100);
+    }
+
+    // Apex Automobili Finish Customizer
+    function setCarFinish(colorName, colorHex) {
+      document.getElementById('carFinish').innerText = colorName;
+      document.getElementById('carFinish').style.color = colorHex;
+      playAudioClick(750, 0.05);
+      showToast(`Telemetry Spec Updated: ${colorName}`);
+    }
+
+    // GhostPose Canvas Animation
+    function animatePoseCanvas() {
+      playAudioClick(800, 0.06);
+      const c = document.getElementById('poseCanvas');
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth = 2;
+      ctx.fillStyle = '#34d399';
+
+      const headX = 110, headY = 22;
+      const chestX = 110, chestY = 45;
+      const hipX = 110, hipY = 68;
+      
+      const leftElbowX = 85, leftElbowY = 38;
+      const leftHandX = 70, leftHandY = 26;
+      const rightElbowX = 135, rightElbowY = 40;
+      const rightHandX = 155, rightHandY = 55;
+
+      const leftKneeX = 90, leftKneeY = 82;
+      const leftFootX = 85, leftFootY = 96;
+      const rightKneeX = 130, rightKneeY = 82;
+      const rightFootX = 138, rightFootY = 96;
+
+      ctx.beginPath();
+      ctx.moveTo(headX, headY); ctx.lineTo(chestX, chestY); ctx.lineTo(hipX, hipY);
+      ctx.moveTo(chestX, chestY); ctx.lineTo(leftElbowX, leftElbowY); ctx.lineTo(leftHandX, leftHandY);
+      ctx.moveTo(chestX, chestY); ctx.lineTo(rightElbowX, rightElbowY); ctx.lineTo(rightHandX, rightHandY);
+      ctx.moveTo(hipX, hipY); ctx.lineTo(leftKneeX, leftKneeY); ctx.lineTo(leftFootX, leftFootY);
+      ctx.moveTo(hipX, hipY); ctx.lineTo(rightKneeX, rightKneeY); ctx.lineTo(rightFootX, rightFootY);
+      ctx.stroke();
+
+      const points = [
+        [headX, headY, 5], [chestX, chestY, 3], [hipX, hipY, 3],
+        [leftElbowX, leftElbowY, 3], [leftHandX, leftHandY, 3],
+        [rightElbowX, rightElbowY, 3], [rightHandX, rightHandY, 3],
+        [leftKneeX, leftKneeY, 3], [leftFootX, leftFootY, 3],
+        [rightKneeX, rightKneeY, 3], [rightFootX, rightFootY, 3]
+      ];
+      points.forEach(([x, y, r]) => {
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      showToast("MediaPipe Skeletal Keypoints Tracked (11 Landmarks)");
+    }
+    window.addEventListener('load', animatePoseCanvas);
+
+    // Chatbot 1: Personal Rajat AI Assistant
+    let personalCopilotOpen = false;
+    function togglePersonalCopilot() {
+      const win = document.getElementById('personal-copilot-window');
+      win.style.display = personalCopilotOpen ? 'none' : 'flex';
+      personalCopilotOpen = !personalCopilotOpen;
+    }
+
+    function sendPersonalChat() {
+      const input = document.getElementById('personalChatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const chatBody = document.getElementById('personalChatBody');
+      chatBody.innerHTML += `<div class="chat-msg user-msg">${text}</div>`;
+      input.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+      playAudioClick(650, 0.05);
+
+      setTimeout(() => {
+        let reply = "I can answer questions regarding Rajat Rai's engineering projects, IIT Jodhpur studies (Roll: B25BS3394), Team GRIT, or contact information!";
+        const q = text.toLowerCase();
+        
+        if (q.includes('who') || q.includes('about') || q.includes('rajat')) {
+          reply = "<strong>Rajat Rai</strong> is a GenAI Architect & Systems Engineer pursuing a <strong>BS in Applied AI & Data Science at IIT Jodhpur</strong> (Roll: B25BS3394). He is the Founder & Tech Lead at <strong>Team GRIT</strong>.";
+        } else if (q.includes('apex') || q.includes('automobili')) {
+          reply = "<strong>Apex Automobili</strong> is Rajat's high-performance hypercar web showroom featuring telemetry glass dashboards (1,850 HP) and 3D motion layouts. Explore it live at: <a href='https://rajjuubhai16.github.io/ApexAutomobili/' target='_blank' class='text-sky-300 underline'>Apex Automobili Live</a>";
+        } else if (q.includes('grit') || q.includes('work os') || q.includes('team grit')) {
+          reply = "<strong>GRIT Work OS</strong> is a centralized productivity and operational platform managing multi-department workflows. Check out the live application at: <a href='https://grit-work-os.streamlit.app/' target='_blank' class='text-sky-300 underline'>GRIT Work OS Live App</a>";
+        } else if (q.includes('eduaniai') || q.includes('flagship') || q.includes('video')) {
+          reply = "<strong>EduAniAI</strong> is Rajat's flagship text-to-video pipeline turning NCERT textbooks into interactive animated lessons via Gemini 2.5 Flash, MoviePy, gTTS, and FFmpeg!";
+        } else if (q.includes('iit') || q.includes('education') || q.includes('jodhpur')) {
+          reply = "Rajat is enrolled in the BS in Applied AI & Data Science program at <strong>IIT Jodhpur</strong> (Roll No: B25BS3394) and successfully qualified <strong>JEE Advanced 2025</strong>.";
+        } else if (q.includes('email') || q.includes('contact') || q.includes('reach')) {
+          reply = "Reach Rajat directly via his official IIT email: <strong>b25bs3394@iitj.ac.in</strong> or through LinkedIn: <a href='https://linkedin.com/in/codewithrajat' target='_blank' class='text-sky-300 underline'>linkedin.com/in/codewithrajat</a>.";
+        } else if (q.includes('skill') || q.includes('tech stack') || q.includes('python')) {
+          reply = "Key Skills: <strong>Google Gemini API (2.5 Flash)</strong>, Python Core/Automation, MoviePy, FFmpeg, MediaPipe, TensorFlow.js, Streamlit, SQL, and Chess-based Strategic Logic.";
+        } else if (q.includes('isro') || q.includes('google') || q.includes('honor')) {
+          reply = "Honors include: <strong>ISRO Bharatiya Antariksh Hackathon (2026)</strong>, <strong>Top Lyria Artist & Google Ambassador</strong>, and <strong>JEE Advanced 2025</strong> Qualified.";
+        }
+
+        chatBody.innerHTML += `<div class="chat-msg bot-msg">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+        playAudioClick(850, 0.08);
+      }, 350);
+    }
+
+    // Chatbot 2: EduAniAI Pro Architecture Assistant
+    let appCopilotOpen = false;
+    function toggleAppCopilot() {
+      const win = document.getElementById('app-copilot-window');
+      win.style.display = appCopilotOpen ? 'none' : 'flex';
+      appCopilotOpen = !appCopilotOpen;
+    }
+
+    function sendAppChat() {
+      const input = document.getElementById('appChatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const chatBody = document.getElementById('appChatBody');
+      chatBody.innerHTML += `<div class="chat-msg user-msg">${text}</div>`;
+      input.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+      playAudioClick(650, 0.05);
+
+      setTimeout(() => {
+        let reply = "Ask me about EduAniAI's 5-stage automated pipeline, Gemini 2.5 Flash API, MoviePy engine, Academic/Character/Director modules, or FFmpeg encoding.";
+        const q = text.toLowerCase();
+
+        if (q.includes('pipeline') || q.includes('how') || q.includes('work') || q.includes('architecture')) {
+          reply = "<strong>EduAniAI 5-Stage Pipeline:</strong><br>1. Input OCR / Vision Parsing<br>2. Gemini 2.5 Flash Script Generation<br>3. gTTS Timestamped Audio Synthesis<br>4. MoviePy & NumPy Compositing<br>5. FFmpeg Ultrafast .mp4 Rendering.";
+        } else if (q.includes('gemini') || q.includes('flash') || q.includes('llm')) {
+          reply = "We utilize <strong>Google Gemini 2.5 Flash API</strong> due to its near-instant token generation speed, low latency, and superior multimodal comprehension of textbook diagrams.";
+        } else if (q.includes('module') || q.includes('academic') || q.includes('character') || q.includes('director')) {
+          reply = "EduAniAI has 3 Modules:<br>• <strong>Academic:</strong> NCERT Class 1-12 subject summaries.<br>• <strong>Character:</strong> 7-min simulations with avatars like Quantum Physicist.<br>• <strong>Director's:</strong> Custom user creative prompt rendering.";
+        } else if (q.includes('ffmpeg') || q.includes('moviepy') || q.includes('render')) {
+          reply = "MoviePy coordinates video clip timing and text cards, while FFmpeg executes hardware-accelerated H.264 rendering with ultrafast compression presets.";
+        }
+
+        chatBody.innerHTML += `<div class="chat-msg bot-msg">${reply}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+        playAudioClick(850, 0.08);
+      }, 350);
+    }
+  </script>
+</body>
+</html>
